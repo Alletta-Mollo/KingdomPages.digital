@@ -86,7 +86,7 @@ const ContactPage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
         >
-          We'd love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.
+          We would love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out using this form
         </motion.p>
       </section>
 
@@ -124,7 +124,7 @@ const ContactPage = () => {
               </div>
               <div>
                 <Label htmlFor="subject" className="text-foreground/80">Subject</Label>
-                <Input id="subject" name="subject" type="text" placeholder="Question about books" required value={formData.subject} onChange={handleChange} className="bg-background/70" />
+                <Input id="subject" name="subject" type="text" placeholder="I just gave my heart to Christ" required value={formData.subject} onChange={handleChange} className="bg-background/70" />
               </div>
               <div>
                 <Label htmlFor="message" className="text-foreground/80">Message</Label>
