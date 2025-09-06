@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: 0 0% 100%; /* White */
+		--foreground: 270 20% 25%; /* Dark Purple */
+
+		--card: 0 0% 98%; /* Very Light Gray, almost white */
+		--card-foreground: 270 20% 25%;
+
+		--popover: 0 0% 98%;
+		--popover-foreground: 270 20% 25%;
+
+		--primary: 260 70% 60%; /* Vibrant Purple */
+		--primary-foreground: 0 0% 100%; /* White */
+
+		--secondary: 210 80% 55%; /* Vibrant Blue */
+		--secondary-foreground: 0 0% 100%; /* White */
+
+		--muted: 270 50% 95%; /* Very Light Lavender/Gray */
+		--muted-foreground: 270 15% 45%; /* Muted Purple */
+
+		--accent: 140 60% 45%; /* Vibrant Green */
+		--accent-foreground: 140 25% 95%; /* Light Green for contrast on green */
+
+		--destructive: 0 70% 55%; /* Red */
+		--destructive-foreground: 0 0% 100%;
+
+		--border: 270 30% 90%; /* Light Purple/Gray border */
+		--input: 270 30% 96%; /* Very Light Purple/Gray input background */
+		--ring: 260 70% 60%; /* Vibrant Purple for focus rings */
+
+		--radius: 0.75rem;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+		font-family: 'Inter', sans-serif;
+	}
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+  h1 { @apply text-4xl lg:text-5xl; }
+  h2 { @apply text-3xl lg:text-4xl; }
+  h3 { @apply text-2xl lg:text-3xl; }
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.solid-nav {
+  background-color: hsl(0 0% 98%); /* Using --card color */
+  border-bottom: 1px solid hsl(var(--border));
+}
