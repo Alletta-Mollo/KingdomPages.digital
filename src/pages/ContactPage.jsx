@@ -77,7 +77,7 @@ const ContactPage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          Get In Touch
+          Get In Touch with us
         </motion.h1>
         <motion.p
           className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto"
@@ -86,7 +86,7 @@ const ContactPage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
         >
-          We would love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out using this form
+          We would love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out using this form:
         </motion.p>
       </section>
 
