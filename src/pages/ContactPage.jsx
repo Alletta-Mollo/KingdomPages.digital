@@ -101,8 +101,8 @@ const ContactPage = () => {
           >
             <h2 className="text-3xl font-bold mb-6 gradient-text">Contact Information</h2>
             <ContactInfoCard icon={Mail} title="Email Us" content="admin@kingdompages.digital" href="mailto:admin@kingdompages.digital" delay={0.1} />
-            <ContactInfoCard icon={Phone} title="Call Us" content="xxx xxx xxxx" href="tel:+15551234567" delay={0.2} />
-            <ContactInfoCard icon={MapPin} title="Our Office" content="xxx xxx xxxx" delay={0.3} />
+            <ContactInfoCard icon={Phone} title="Call Us" content="+(xx )xx xxx xxxx" href="tel:+15551234567" delay={0.2} />
+            <ContactInfoCard icon={MapPin} title="Our Office" content="+(xx) xx xxx xxxx" delay={0.3} />
           </motion.div>
 
           <motion.div
