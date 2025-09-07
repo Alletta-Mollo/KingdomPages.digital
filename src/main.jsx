@@ -8,3 +8,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>
 );
+
+fetch('/version.json')
+  .then(res => res.json())
+  .then(remoteVersion => {
+    const currentVersion = localStorage.getItem('app_version');
+    if (currentVersion !== remoteVersion.version) {
+      localStorage.setItem('app_version', remoteVersion.version);
+      window.location.reload(true);
+    }
+  });
