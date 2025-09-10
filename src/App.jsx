@@ -1,17 +1,62 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import ScrollToTop from '@/components/ScrollToTop';
 import HomePage from '@/pages/HomePage';
 import LibraryPage from '@/pages/LibraryPage';
 import AboutPage from '@/pages/AboutPage';
 import ContactPage from '@/pages/ContactPage';
-import ReadingPage from '@/pages/ReadingPage'; 
+import ReadingPage from '@/pages/ReadingPage';
+import SalvationPage from '@/pages/SalvationPage';
 import { Toaster } from '@/components/ui/toaster';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import PageLoader from '@/components/PageLoader';
+import { AnimatePresence } from 'framer-motion';
+
+const AppContent = () => {
+  const location = useLocation();
+  const [loading, setLoading] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  useEffect(() => {
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+      return;
+    }
+
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
+  return (
+    <>
+      <AnimatePresence mode="wait">
+        {loading && <PageLoader />}
+      </AnimatePresence>
+      
+      <div style={{ visibility: loading ? 'hidden' : 'visible' }}>
+        <Layout>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/library" element={<LibraryPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/salvation" element={<SalvationPage />} />
+            <Route path="/read/:itemId" element={<ReadingPage />} />
+          </Routes>
+        </Layout>
+      </div>
+    </>
+  );
+};
+
 
 function App() {
-	return (
+  return (
     <HelmetProvider>
       <Router>
         <ScrollToTop />
@@ -21,19 +66,11 @@ function App() {
           <meta property="og:title" content="Kingdom Pages - Inspiring Digital Stories" />
           <meta property="og:description" content="Nourishing faith and inspiring minds through a curated collection of Christian digital literature." />
         </Helmet>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/library" element={<LibraryPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/read/:itemId" element={<ReadingPage />} />
-          </Routes>
-        </Layout>
+        <AppContent />
         <Toaster />
       </Router>
     </HelmetProvider>
-	);
+  );
 }
 
 export default App;

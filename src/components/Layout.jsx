@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { BookOpenText, Home, Info, Mail, Menu, X, Library } from 'lucide-react';
+import { BookOpenText, Home, Info, Mail, Menu, X, Library, Cross } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navItems = [
 	{ name: 'Home', path: '/', icon: Home },
 	{ name: 'Library', path: '/library', icon: Library },
 	{ name: 'About Us', path: '/about', icon: Info },
+    { name: 'Salvation', path: '/salvation', icon: Cross },
 	{ name: 'Contact Us', path: '/contact', icon: Mail },
 ];
 
@@ -18,7 +20,7 @@ const Layout = ({ children }) => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
 	return (
-		<div className="min-h-screen flex flex-col bg-gradient-to-br from-background via-purple-50 to-blue-50">
+		<div className="min-h-screen flex flex-col bg-background transition-colors duration-500">
 			<header className="sticky top-0 z-50 shadow-lg solid-nav">
 				<nav className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex items-center justify-between h-20">
@@ -33,7 +35,7 @@ const Layout = ({ children }) => {
 							<span className="text-2xl font-bold gradient-text">Kingdom Pages</span>
 						</NavLink>
 
-						<div className="hidden md:flex items-center space-x-4">
+						<div className="hidden md:flex items-center space-x-1">
 							{navItems.map((item, index) => (
 								<motion.div
                   key={item.name}
@@ -46,7 +48,7 @@ const Layout = ({ children }) => {
 										onClick={() => isMobileMenuOpen && toggleMobileMenu()}
 										className={({ isActive }) =>
 											`relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out hover:text-primary transform hover:scale-105 ${
-												isActive ? 'text-primary font-semibold' : 'text-foreground/80'
+												isActive ? 'text-primary font-semibold' : 'text-muted-foreground'
 											}`
 										}
 									>
@@ -66,9 +68,13 @@ const Layout = ({ children }) => {
 									</NavLink>
 								</motion.div>
 							))}
+               <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 1 }} className="ml-4">
+                <ThemeToggle />
+              </motion.div>
 						</div>
             
-						<div className="md:hidden flex items-center">
+						<div className="md:hidden flex items-center gap-2">
+              <ThemeToggle />
 							<Button variant="ghost" size="icon" onClick={toggleMobileMenu} aria-label="Open menu">
 								{isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
 							</Button>
@@ -93,7 +99,7 @@ const Layout = ({ children }) => {
 										onClick={toggleMobileMenu}
 										className={({ isActive }) =>
 											`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-												isActive ? 'bg-primary/10 text-primary' : 'text-foreground/80 hover:bg-muted/50'
+												isActive ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted/50'
 											}`
 										}
 									>
@@ -109,7 +115,7 @@ const Layout = ({ children }) => {
 				</AnimatePresence>
 			</header>
 
-			<main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+			<main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
@@ -123,7 +129,7 @@ const Layout = ({ children }) => {
         </AnimatePresence>
       </main>
 
-			<footer className="bg-gradient-to-t from-purple-100/50 via-blue-50/50 to-transparent mt-12 py-12 text-center text-foreground/70">
+			<footer className="bg-background/50 mt-12 py-12 text-center text-muted-foreground border-t">
 				<motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

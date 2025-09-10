@@ -77,7 +77,7 @@ const ContactPage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          Get In Touch with us
+          Get In Touch
         </motion.h1>
         <motion.p
           className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto"
@@ -86,7 +86,7 @@ const ContactPage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
         >
-          We would love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out using this form:
+          We'd love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.
         </motion.p>
       </section>
 
@@ -100,9 +100,9 @@ const ContactPage = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-bold mb-6 gradient-text">Contact Information</h2>
-            <ContactInfoCard icon={Mail} title="Email Us" content="admin@kingdompages.digital" href="mailto:admin@kingdompages.digital" delay={0.1} />
-            <ContactInfoCard icon={Phone} title="Call Us" content="+(xx)xx xxx xxxx" href="tel:+15551234567" delay={0.2} />
-            <ContactInfoCard icon={MapPin} title="Our Office" content="QC5M+935, camp ground Lagos-Ibadan Expressway, Moba, Nigeria" delay={0.3} />
+            <ContactInfoCard icon={Mail} title="Email Us" content="support@kingdompages.com" href="mailto:support@kingdompages.com" delay={0.1} />
+            <ContactInfoCard icon={Phone} title="Call Us" content="+1 (555) 123-4567" href="tel:+15551234567" delay={0.2} />
+            <ContactInfoCard icon={MapPin} title="Our Office" content="123 Faith Avenue, Inspiration City, CA 90210" delay={0.3} />
           </motion.div>
 
           <motion.div
@@ -124,7 +124,7 @@ const ContactPage = () => {
               </div>
               <div>
                 <Label htmlFor="subject" className="text-foreground/80">Subject</Label>
-                <Input id="subject" name="subject" type="text" placeholder="I just gave my heart to Christ" required value={formData.subject} onChange={handleChange} className="bg-background/70" />
+                <Input id="subject" name="subject" type="text" placeholder="Question about books" required value={formData.subject} onChange={handleChange} className="bg-background/70" />
               </div>
               <div>
                 <Label htmlFor="message" className="text-foreground/80">Message</Label>
@@ -152,7 +152,7 @@ const ContactPage = () => {
             transition={{ duration: 0.7 }}
           >
              <iframe
-                src="https://share.google/ps1rhXcpdaoVSaWgn"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-118.3959,34.0887,-118.3939,34.0907&layer=mapnik&marker=34.0897,-118.3949"
                 style={{border:0, width: '100%', height: '100%'}}
                 allowFullScreen={true}
                 loading="lazy"
