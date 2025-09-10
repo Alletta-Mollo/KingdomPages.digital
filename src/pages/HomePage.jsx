@@ -1,9 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, Feather, MessageSquare, PenTool } from 'lucide-react';
+import { ArrowRight, BookOpen, Feather, MessageSquare, Book, Sparkles } from 'lucide-react';
 import { libraryData } from '@/data/libraryData';
+import { WavySeparator } from '@/components/WavySeparator';
 
 const AnimatedOrb = ({ className, initial, animate }) => (
   <motion.div
@@ -14,21 +15,66 @@ const AnimatedOrb = ({ className, initial, animate }) => (
 );
 
 const FeatureCard = ({ icon: Icon, title, description, link, linkText, delay }) => {
+  const ref = useRef(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const top = useTransform(mouseYSpring, [-0.5, 0.5], ['40%', '60%']);
+  const left = useTransform(mouseXSpring, [-0.5, 0.5], ['40%', '60%']);
+
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['12.5deg', '-12.5deg']);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-12.5deg', '12.5deg']);
+
   return (
     <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: 'preserve-3d',
+      }}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="h-full"
+      className="relative h-full"
     >
-      <div className="h-full text-center p-6 md:p-8 glassmorphism hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300 rounded-2xl flex flex-col">
+      <div
+        style={{
+          transform: 'translateZ(75px)',
+          transformStyle: 'preserve-3d',
+        }}
+        className="h-full text-center p-6 md:p-8 glassmorphism rounded-2xl flex flex-col aurora-card"
+      >
         <div className="mb-4 inline-block p-4 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full text-primary">
-          <Icon size={32} />
+          <Icon size={32} style={{ transform: 'translateZ(50px)' }}/>
         </div>
-        <h3 className="text-2xl font-bold mb-2 text-foreground">{title}</h3>
-        <p className="text-muted-foreground mb-6 flex-grow">{description}</p>
-        <Button asChild variant="outline">
+        <h3 className="text-2xl font-bold mb-2 text-foreground" style={{ transform: 'translateZ(50px)' }}>{title}</h3>
+        <p className="text-muted-foreground mb-6 flex-grow" style={{ transform: 'translateZ(40px)' }}>{description}</p>
+        <Button asChild variant="outline" style={{ transform: 'translateZ(60px)' }}>
           <NavLink to={link} className="group">
             {linkText} <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </NavLink>
@@ -38,25 +84,25 @@ const FeatureCard = ({ icon: Icon, title, description, link, linkText, delay }) 
   );
 };
 
-const authors = [...new Set(libraryData.map(item => item.author))];
 
 const Marquee = () => {
+  const titles = libraryData.slice(0, 10);
   return (
     <div className="relative flex w-full overflow-x-hidden">
       <div className="marquee">
         <div className="marquee__content">
-          {authors.map(author => (
-            <div key={author} className="flex items-center space-x-2 mx-4">
-              <PenTool className="text-primary" />
-              <span className="text-lg font-medium text-foreground">{author}</span>
+          {titles.map(item => (
+            <div key={`${item.id}-1`} className="flex items-center space-x-2 mx-6">
+              <Book className="text-primary w-5 h-5" />
+              <span className="text-lg font-medium text-foreground whitespace-nowrap">{item.title}</span>
             </div>
           ))}
         </div>
         <div aria-hidden="true" className="marquee__content">
-           {authors.map(author => (
-            <div key={author} className="flex items-center space-x-2 mx-4">
-              <PenTool className="text-primary" />
-              <span className="text-lg font-medium text-foreground">{author}</span>
+           {titles.map(item => (
+            <div key={`${item.id}-2`} className="flex items-center space-x-2 mx-6">
+              <Book className="text-primary w-5 h-5" />
+              <span className="text-lg font-medium text-foreground whitespace-nowrap">{item.title}</span>
             </div>
           ))}
         </div>
@@ -110,16 +156,21 @@ const HomePage = () => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.5, type: 'spring', stiffness: 200, damping: 20 }}
-            className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4"
+            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6 transform -rotate-3"
           >
-            Welcome to a Universe of Words
+            <Sparkles className="w-4 h-4"/>
+            Welcome Home, Creatives
           </motion.div>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-            <span className="gradient-text">Unfold Your Imagination.</span><br/>
-            <span className="text-foreground">Discover, Read, Create.</span>
+          <h1 className="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter">
+            <span className="block">READ. WRITE.</span>
+            <span className="block highlight-scribble">
+              CONNECT.
+           </span>
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
-            A sanctuary for poets, storytellers, and dreamers. Dive into a curated library of art forms or share your own voice with the world.
+
+
+          <p className="max-w-xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
+            A sanctuary for poets, storytellers, and dreamers. Discover art, share your voice, and find your community.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
@@ -137,9 +188,13 @@ const HomePage = () => {
         </motion.div>
       </section>
       
-       <section className="py-12 glassmorphism relative z-10">
-        <h3 className="text-center text-xl font-semibold mb-8 text-muted-foreground">Featured Authors</h3>
-        <Marquee />
+      <section className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+        <WavySeparator direction="down" className="text-background" />
+        <div className="py-24 bg-background relative z-10">
+          <h3 className="text-center text-xl font-semibold mb-8 text-muted-foreground">Discover Our Collection</h3>
+          <Marquee />
+        </div>
+        <WavySeparator direction="up" className="text-background" />
       </section>
 
       <section id="features" className="container mx-auto px-4 relative z-10">
@@ -147,7 +202,7 @@ const HomePage = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">A Canvas for Creativity</h2>
             <p className="max-w-2xl mx-auto text-muted-foreground">Everything you need to immerse yourself in the world of literature and art.</p>
          </div>
-         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
             <FeatureCard 
               icon={BookOpen}
               title="Curated Library"
@@ -181,7 +236,7 @@ const HomePage = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="glassmorphism p-10 md:p-16 rounded-2xl"
+            className="glassmorphism p-10 md:p-16 rounded-2xl aurora-card"
         >
           <h2 className="text-4xl font-bold mb-4 gradient-text">Ready to Begin Your Next Chapter?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-muted-foreground">

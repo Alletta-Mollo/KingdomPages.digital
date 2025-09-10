@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { BookOpenText, Home, Info, Mail, Menu, X, Library, Cross } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { WavySeparator } from '@/components/WavySeparator';
 
 const navItems = [
 	{ name: 'Home', path: '/', icon: Home },
@@ -21,7 +20,7 @@ const Layout = ({ children }) => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
 	return (
-		<div className="min-h-screen flex flex-col bg-background transition-colors duration-500 overflow-x-hidden">
+		<div className="min-h-screen flex flex-col bg-background transition-colors duration-500">
 			<header className="sticky top-0 z-50 shadow-lg solid-nav">
 				<nav className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex items-center justify-between h-20">
@@ -33,7 +32,7 @@ const Layout = ({ children }) => {
               >
                 <BookOpenText className="h-10 w-10 text-primary" />
               </motion.div>
-							<span className="text-2xl font-bold gradient-text" style={{ fontFamily: "'Lexend', sans-serif" }}>Kingdom Pages</span>
+							<span className="text-2xl font-bold gradient-text">Kingdom Pages</span>
 						</NavLink>
 
 						<div className="hidden md:flex items-center space-x-1">
@@ -116,7 +115,7 @@ const Layout = ({ children }) => {
 				</AnimatePresence>
 			</header>
 
-			<main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 relative">
+			<main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 relative">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
@@ -130,13 +129,11 @@ const Layout = ({ children }) => {
         </AnimatePresence>
       </main>
 
-			<footer className="relative mt-12 pt-24 pb-12 text-center text-muted-foreground">
-        <WavySeparator direction="up" className="text-background" />
+			<footer className="bg-background/50 mt-12 py-12 text-center text-muted-foreground border-t">
 				<motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="relative"
         >
 					<div className="flex justify-center items-center space-x-2 mb-4">
             <span className="text-sm">Kingdom Pages &copy; {new Date().getFullYear()}</span>

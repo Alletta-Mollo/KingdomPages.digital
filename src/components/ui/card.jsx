@@ -1,14 +1,40 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { cn } from '@/lib/utils';
 
-const Card = React.forwardRef(({ className, ...props }, ref) => (
+const CardBase = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
     className={cn('rounded-lg border bg-card text-card-foreground shadow-sm', className)}
     {...props}
   />
 ));
+CardBase.displayName = 'CardBase';
+
+const Card = React.forwardRef(({ className, children, ...props }, ref) => {
+  const cardRef = useRef(null);
+  
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    cardRef.current.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+    cardRef.current.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+  };
+
+  return (
+    <CardBase
+      ref={ref}
+      className={cn('aurora-card relative', className)}
+      onMouseMove={handleMouseMove}
+      {...props}
+    >
+      <div ref={cardRef} className="h-full w-full">
+        {children}
+      </div>
+    </CardBase>
+  );
+});
 Card.displayName = 'Card';
+
 
 const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
   <div

@@ -9,7 +9,7 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const ContactInfoCard = ({ icon, title, content, href, delay }) => (
   <motion.div
-    className="flex items-start space-x-4 p-6 bg-card rounded-xl shadow-lg glassmorphism"
+    className="flex items-start space-x-4 p-6 bg-card rounded-xl shadow-lg glassmorphism aurora-card"
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
@@ -68,7 +68,10 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-16 relative">
+      <div className="creative-blob w-80 h-80 bg-accent/10 top-1/2 -right-40" />
+      <div className="creative-blob w-80 h-80 bg-secondary/10 top-0 -left-40 animate-pulse" />
+
       <section id="contact" className="text-center py-12 md:py-16 bg-gradient-to-br from-purple-100/30 via-blue-100/20 to-transparent rounded-xl shadow-inner scroll-mt-20">
         <motion.h1
           className="text-5xl md:text-6xl font-extrabold mb-6 gradient-text"
@@ -106,7 +109,7 @@ const ContactPage = () => {
           </motion.div>
 
           <motion.div
-            className="p-6 md:p-8 bg-card/90 rounded-xl shadow-2xl glassmorphism"
+            className="p-6 md:p-8 bg-card/90 rounded-xl shadow-2xl glassmorphism aurora-card"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

@@ -8,6 +8,8 @@ import AboutPage from '@/pages/AboutPage';
 import ContactPage from '@/pages/ContactPage';
 import ReadingPage from '@/pages/ReadingPage';
 import SalvationPage from '@/pages/SalvationPage';
+import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage';
+import TermsOfServicePage from '@/pages/TermsOfServicePage';
 import { Toaster } from '@/components/ui/toaster';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import PageLoader from '@/components/PageLoader';
@@ -27,7 +29,7 @@ const AppContent = () => {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 900);
 
     return () => clearTimeout(timer);
   }, [location.pathname]);
@@ -47,6 +49,8 @@ const AppContent = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/salvation" element={<SalvationPage />} />
             <Route path="/read/:itemId" element={<ReadingPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           </Routes>
         </Layout>
       </div>
