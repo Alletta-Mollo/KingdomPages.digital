@@ -243,7 +243,7 @@ const HomePage = () => {
             The next story that will change your perspective is just a click away.
           </p>
           <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
-             <NavLink to="/library">
+             <NavLink to= "/library">
                 Take Me to the Library <BookOpen className="ml-2 h-5 w-5 transition-transform group-hover:rotate-3"/>
             </NavLink>
           </Button>

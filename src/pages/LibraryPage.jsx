@@ -162,7 +162,7 @@ const LibraryPage = () => {
 
       {filteredAndSortedData.length > 0 ? (
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-auto-fit gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -172,9 +172,11 @@ const LibraryPage = () => {
             <motion.div key={item.id} variants={itemVariants}>
               <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/80 glassmorphism transform hover:-translate-y-1">
                 <CardHeader className="p-0">
-                  <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
-                    <img src={item.coverImgUrl} alt={item.title} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+                  <NavLink to={`/read/${item.id}`} className="block">
+                    <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
+                      <img src={item.coverImgUrl} alt={item.title} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </NavLink>
                 </CardHeader>
                 <CardContent className="p-4 flex-grow">
                   <CardTitle className="text-xl mb-1 gradient-text">{item.title}</CardTitle>
