@@ -174,7 +174,7 @@ const LibraryPage = () => {
                 <CardHeader className="p-0">
                   <NavLink to={`/read/${item.id}`} className="block">
                     <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
-                      <img src={item.coverImgUrl} alt={item.title} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                      <img src={item.picture} alt={item.title} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                   </NavLink>
                 </CardHeader>

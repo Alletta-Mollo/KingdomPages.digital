@@ -195,7 +195,7 @@ const ReadingPage = () => {
       <Card className="mt-8 shadow-xl glassmorphism">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 gradient-text"><MessageCircle/> Community Comments</CardTitle>
-          <CardDescription>Comments are saved locally in your browser. For a shared experience, the site owner will need to enable database integration.</CardDescription>
+          <CardDescription></CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4 max-h-96 overflow-y-auto pr-4">
