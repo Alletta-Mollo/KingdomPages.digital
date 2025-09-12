@@ -44,7 +44,7 @@ const ContactPage = () => {
     setIsSubmitting(true);
 
     const { name, email, subject, message } = formData;
-    const recipientEmail = "support@kingdompages.com";
+    const recipientEmail = "admin@kingdompages.digital";
     
     const mailtoSubject = encodeURIComponent(`[From ${name}] ${subject}`);
     const mailtoBody = encodeURIComponent(
