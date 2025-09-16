@@ -10,14 +10,14 @@ import { Search, Filter, BookOpen, Clock, FileText, Book, Frown } from 'lucide-r
 import { NavLink } from 'react-router-dom';
 import { libraryData } from '@/data/libraryData';
 
-const genres = ["All", "Fiction", "Comic", "Stories", "PDF"];
+const genres = ["All", ...new Set(libraryData.map(item => item.genre))];
 const authors = ["All", ...new Set(libraryData.map(item => item.author))];
 
 const LibraryPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('All');
   const [selectedAuthor, setSelectedAuthor] = useState('All');
-  const [lengthRange, setLengthRange] = useState([0, 500]);
+  const [lengthRange, setLengthRange] = useState([0, 200]);
   const [sortBy, setSortBy] = useState('title_asc');
   const [showFilters, setShowFilters] = useState(false);
 
@@ -135,7 +135,7 @@ const LibraryPage = () => {
             <Slider
               id="length-slider"
               min={0}
-              max={500}
+              max={200}
               step={10}
               value={lengthRange}
               onValueChange={setLengthRange}
@@ -191,11 +191,7 @@ const LibraryPage = () => {
                   </div>
                 </CardContent>
                 <CardFooter className="p-4 border-t border-border/50">
-                  <Button asChild variant="outline" className="w-full hover:bg-primary/10 hover:text-primary transition-colors group">
-                    <NavLink to={`/read/${item.id}`}>
-                      Read <BookOpen size={16} className="ml-2 transition-transform duration-300 group-hover:scale-110" />
-                    </NavLink>
-                  </Button>
+                 <CardDescription className="text-xs mb-1 gradient-text">{item.collection}</CardDescription>
                 </CardFooter>
               </Card>
             </motion.div>

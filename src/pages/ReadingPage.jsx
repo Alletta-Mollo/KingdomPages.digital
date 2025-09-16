@@ -12,6 +12,45 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { v4 as uuidv4 } from 'uuid';
 import { Helmet } from 'react-helmet-async';
 
+const formatContent = (text) => {
+  if (!text) return null;
+
+  const lines = text.split('\n');
+
+  return lines.map((line, i) => {
+    let formattedLine = line;
+
+    // Handle ***bold***
+    const boldRegex = /\*\*\*(.*?)\*\*\*/g;
+    formattedLine = formattedLine.split(boldRegex).map((part, index) =>
+      index % 2 === 1 ? <strong key={`b-${i}-${index}`}>{part}</strong> : part
+    );
+
+    // Handle ""gradient""
+    const gradientRegex = /""(.*?)""/g;
+    formattedLine = formattedLine.flatMap((part, index) => {
+      if (typeof part === "string") {
+        return part.split(gradientRegex).map((subPart, subIndex) =>
+          subIndex % 2 === 1 ? (
+            <span
+              key={`g-${i}-${index}-${subIndex}`}
+              className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
+            >
+              {subPart}
+            </span>
+          ) : (
+            subPart
+          )
+        );
+      }
+      return part;
+    });
+
+    return <p key={`p-${i}`} className="mb-4">{formattedLine}</p>;
+  });
+};
+
+
 const ReadingPage = () => {
   const { itemId } = useParams();
   const navigate = useNavigate();
@@ -36,17 +75,31 @@ const ReadingPage = () => {
 
     setItem(libraryItem);
 
-    if (libraryItem.type !== 'PDF' && libraryItem.content) {
-      const wordsPerSegment = 150; 
-      const words = libraryItem.content.split(/\s+/);
-      const segments = [];
-      for (let i = 0; i < words.length; i += wordsPerSegment) {
-        segments.push(words.slice(i, i + wordsPerSegment).join(' '));
-      }
-      setPages(segments);
-    } else {
-      setPages([]);
+   if (libraryItem.type !== 'PDF' && libraryItem.content) {
+    const lines = libraryItem.content.split('\n'); 
+    const wordsPerSegment = 150; 
+    const segments = [];
+
+    let temp = [];
+    let wordCount = 0;
+
+  lines.forEach(line => {
+    const lineWords = line.split(/\s+/);
+    if (wordCount + lineWords.length > wordsPerSegment) {
+      segments.push(temp.join('\n'));
+      temp = [];
+      wordCount = 0;
     }
+    temp.push(line);
+    wordCount += lineWords.length;
+    });
+    if (temp.length > 0) segments.push(temp.join('\n'));
+
+    setPages(segments);
+  } else {
+  setPages([]);
+  } 
+
     
     const storedComments = JSON.parse(localStorage.getItem(`comments_${itemId}`)) || [];
     setComments(storedComments);
@@ -167,10 +220,10 @@ const ReadingPage = () => {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="text-lg leading-relaxed text-foreground/90 whitespace-pre-line prose max-w-none flex-grow"
+                  className="text-lg leading-relaxed text-foreground/90 whitespace-pre-line max-w-none flex-grow"
                   style={{ perspective: "1000px" }} 
                 >
-                  {pages[currentPage]}
+                  {formatContent(pages[currentPage])}
                 </motion.div>
               </AnimatePresence>
               

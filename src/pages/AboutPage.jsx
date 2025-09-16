@@ -65,7 +65,7 @@ const AboutPage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
         >
-          Nourishing faith and inspiring minds through a curated collection of Christian digital literature. We believe in the power of stories to transform lives.
+          Kingdom Pages is a faith-driven digital library that brings together Christian stories, poems, and books that inspire faith, edify believers, and draws people into a personal relationship with Jesus Christ. Our mission is to make the Christian life tangible and relatable through literature that transforms hearts, renews minds, and strengthens the Kingdom of God
         </motion.p>
       </section>
 
@@ -85,8 +85,7 @@ const AboutPage = () => {
                 <h3 className="text-2xl font-semibold text-foreground">Our Mission</h3>
               </div>
               <p className="text-foreground/80">
-                To provide accessible, high-quality Christian digital content that encourages spiritual growth, sparks imagination, and fosters a deeper understanding of faith. We aim to be a beacon of light in the digital world.
-              </p>
+                To spread the Gospel of Jesus Christ and edify believers through Spirit-inspired literature that transforms lives, nurtures faith, and builds the Kingdom of God. </p>
             </div>
             <div>
               <div className="flex items-center mb-2">
@@ -94,7 +93,7 @@ const AboutPage = () => {
                 <h3 className="text-2xl font-semibold text-foreground">Our Vision</h3>
               </div>
               <p className="text-foreground/80">
-                To cultivate a global community where individuals of all ages can discover, engage with, and be transformed by uplifting Christian narratives, fostering a generation rooted in values and inspired by hope.
+                To be the leading Christian digital library where millions worldwide encounter Jesus, grow spiritually, and are inspired through books, poems, stories, and creative expressions.
               </p>
             </div>
           </motion.div>
@@ -120,36 +119,28 @@ const AboutPage = () => {
             <div className="relative wrap overflow-hidden p-2 md:p-10 h-full container mx-auto">
               <div className="absolute border-opacity-20 border-primary h-full border-2 left-1/2 -translate-x-1/2 z-0"></div>
               <TimelineItem
-                date="2023 - Q1"
+                date="2025 - Q2"
                 title="The Spark of an Idea"
-                description="Kingdom Pages was conceived with a vision to make enriching Christian content easily accessible."
+                description= "© Kingdom Pages — Birthed by the Holy Spirit"
                 icon={Sparkles}
                 align="right"
                 delay={0.1}
               />
               <TimelineItem
-                date="2023 - Q3"
+                date="2025 - Q2"
                 title="Platform Development Begins"
-                description="Our dedicated team started building the foundational platform, focusing on user experience and content curation."
+                description="Stories are submitted. A website is created to host and present them."
                 icon={Feather}
                 align="left"
                 delay={0.2}
               />
               <TimelineItem
-                date="2024 - Q2"
-                title="Beta Launch & Community Feedback"
-                description="We launched our beta version to a select group, gathering invaluable feedback to refine our offerings."
+                date="2024 - Q3"
+                title="Official Website Launch "
+                description= "The library is open. Every reader can access all inspired material"
                 icon={Users}
                 align="right"
                 delay={0.3}
-              />
-               <TimelineItem
-                date="2025 - Q1"
-                title="Official Launch"
-                description="Kingdom Pages officially launches, bringing a wide array of digital Christian material to the world."
-                icon={BookHeart}
-                align="left"
-                delay={0.4}
               />
             </div>
         </div>
@@ -159,9 +150,9 @@ const AboutPage = () => {
       <section className="py-12 md:py-16 bg-card/80 rounded-xl shadow-xl glassmorphism">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Impact by Numbers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto px-4">
-          <StatCard icon={BookHeart} value="1000+" label="Digital Items" color="border-primary" delay={0.1} />
-          <StatCard icon={Users} value="5000+" label="Active Readers" color="border-secondary" delay={0.3} />
-          <StatCard icon={Sparkles} value="50+" label="Contributing Authors" color="border-accent" delay={0.5} />
+          <StatCard icon={BookHeart} value="23+" label="Digital Items" color="border-primary" delay={0.1} />
+          <StatCard icon={Users} value="+" label="Active Readers" color="border-secondary" delay={0.3} />
+          <StatCard icon={Sparkles} value="2+" label="Contributing Authors" color="border-accent" delay={0.5} />
         </div>
       </section>
       
