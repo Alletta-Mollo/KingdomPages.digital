@@ -39,6 +39,7 @@ const almostHome = "Almost home\nOh to see your face my Precious Lord\nWhat woul
 const loveConfessions = "Love confessions\nLord I hope I put a smile on your face everyday\nBecause when I look at you\nWhen I let my heart sink a little deeper into your loveliness\nMy smile is so big my face can’t contain it\nLord I hope you’re proud of me\nBecause I’m so proud to be yours\nI’m so proud to be the one you want\nI’m so proud to identify with you\nEven when standing with you means\nFighting wars\nI’d rather fight wars with you than have peace without you\nAssuming there’s such a thing as peace without you\nI’m with you Lord\nI’m not going anywhere\nLord I hope your heart sings when you think of me\nBecause I can’t stop the songs in my heart\nThey’ve become a permanent soundtrack to my daily living\nAll I’m saying Lord is\nIn you, With you\nI’ve found the greatest love\n& I can’t help but wonder\nIf every transcendent experience of you is what you experience of me\nLord your love is surer to me than the sky is blue\nI pray you never have a reason to doubt my love for you";
 
 
+
 export const libraryData = [
   { id: 1, title: "A loved life", author: "P.E.B", genre: "Poem", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: aLovedLife, picture: "./assets/ALovedLife.png" },
   { id: 2, title: "A watered garden", author: "P.E.B", genre: "Poem", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: aWateredGarden, picture: "/assets/AWateredGarden.png" },
