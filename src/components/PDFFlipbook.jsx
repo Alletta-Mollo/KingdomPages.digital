@@ -11,17 +11,19 @@ const PDFFlipbook = ({ pdfUrl }) => {
   const [numPages, setNumPages] = useState(null);
 
   return (
-    <div className="w-full flex justify-center items-center py-6">
+    <div className="w-full overflow-x-auto flex justify-center px-4">
       <Document
         file={pdfUrl}
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
         loading={<p className="text-muted-foreground text-center">Loading PDF...</p>}
+        error={<p className="text-red-500 text-center">Failed to load PDF file.</p>}
       >
         {numPages && (
           <HTMLFlipBook
-            width={400}
-            height={550}
+            width={350}
+            height={500}
             size="stretch"
+            responsive="true"
             minWidth={315}
             maxWidth={1000}
             minHeight={400}
@@ -33,7 +35,12 @@ const PDFFlipbook = ({ pdfUrl }) => {
           >
             {Array.from({ length: numPages }, (_, index) => (
               <div key={index} className="page bg-white p-4">
-                <Page pageNumber={index + 1} width={400} />
+                <Page
+                  pageNumber={index + 1}
+                  width={350}
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                />
               </div>
             ))}
           </HTMLFlipBook>
