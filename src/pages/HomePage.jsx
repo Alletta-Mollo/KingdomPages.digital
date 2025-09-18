@@ -84,25 +84,37 @@ const FeatureCard = ({ icon: Icon, title, description, link, linkText, delay }) 
   );
 };
 
-
 const Marquee = () => {
-  const titles = libraryData.slice(0, 10);
+  const titles = libraryData.slice(0, 10); // Adjust as needed
+
   return (
     <div className="relative flex w-full overflow-x-hidden">
       <div className="marquee">
         <div className="marquee__content">
           {titles.map(item => (
-            <div key={`${item.id}-1`} className="flex items-center space-x-2 mx-6">
-              <Book className="text-primary w-5 h-5" />
-              <span className="text-lg font-medium text-foreground whitespace-nowrap">{item.title}</span>
+            <div key={`${item.id}-1`} className="flex flex-col items-center mx-6 space-y-2">
+              <img
+                src={item.picture}
+                alt={item.title}
+                className="w-36 h-32 object-cover rounded-xl shadow-lg"
+              />
+              <span className="text-base font-medium text-foreground text-center whitespace-nowrap">
+                {item.title}
+              </span>
             </div>
           ))}
         </div>
         <div aria-hidden="true" className="marquee__content">
-           {titles.map(item => (
-            <div key={`${item.id}-2`} className="flex items-center space-x-2 mx-6">
-              <Book className="text-primary w-5 h-5" />
-              <span className="text-lg font-medium text-foreground whitespace-nowrap">{item.title}</span>
+          {titles.map(item => (
+            <div key={`${item.id}-2`} className="flex flex-col items-center mx-6 space-y-2">
+              <img
+                src={item.picture}
+                alt={item.title}
+                className="w-36 h-32 object-cover rounded-xl shadow-lg"
+              />
+              <span className="text-base font-medium text-foreground text-center whitespace-nowrap">
+                {item.title}
+              </span>
             </div>
           ))}
         </div>
@@ -110,6 +122,9 @@ const Marquee = () => {
     </div>
   );
 };
+
+
+
 
 
 const HomePage = () => {
@@ -159,18 +174,18 @@ const HomePage = () => {
             className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6 transform -rotate-3"
           >
             <Sparkles className="w-4 h-4"/>
-            Welcome Home, Creatives
+            Welcome Home, Kingdom Pager
           </motion.div>
           <h1 className="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter">
-            <span className="block">READ. WRITE.</span>
+            <span className="block">READ. CONNECT.</span>
             <span className="block highlight-scribble">
-              CONNECT.
+              BE INSPIRED.
            </span>
           </h1>
 
 
           <p className="max-w-xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
-            A sanctuary for poets, storytellers, and dreamers. Discover art, share your voice, and find your community.
+            A sanctuary for poets, storytellers, and readers. Discover art, share your voice, and find your community.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
@@ -200,7 +215,7 @@ const HomePage = () => {
       <section id="features" className="container mx-auto px-4 relative z-10">
          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">A Canvas for Creativity</h2>
-            <p className="max-w-2xl mx-auto text-muted-foreground">Everything you need to immerse yourself in the world of literature and art.</p>
+            <p className="max-w-2xl mx-auto text-muted-foreground"> Everything you need to immerse yourself in the world of Holy Spirit inspiredliterature and art.</p>
          </div>
          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
             <FeatureCard 

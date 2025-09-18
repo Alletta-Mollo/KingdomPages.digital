@@ -68,7 +68,10 @@ export const libraryData = [
   { id: 20, title: "Nothing Lacking", author: "Miss EJA", genre: "Stories", length: 17, type: "Stories", collection: "The Sealed Life Chronicles", content: nothingLacking, picture: "/assets/NothingLacking.png" },
   { id: 21, title: "Sight by Speaking", author: "Miss EJA", genre: "Stories", length: 14,type: "Stories", collection: "The Sealed Life Chronicles", content: sightBySpeaking , picture: "/assets/SightBySpeaking.png" },
   { id: 22, title: "The Summer Everything Changed", author: "Miss EJA", genre: "Stories", length: 12, type: "Stories", collection: "The Sealed Life Chronicles", content: theSummerEverythingChanged, picture: "/assets/TheSummerEverythingChanged.png" },
-  { id: 23, title: "The Golden Men's Trial", author: "Miss EJA", genre: "Stories", type: "Stories" , length: 23, collection: "The Sealed Life Chronicles", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" }
+  { id: 23, title: "The Golden Men's Trial", author: "Miss EJA", genre: "Stories", type: "Stories" , length: 23, collection: "The Sealed Life Chronicles", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" },
+
+  //PDF
+  { id: 24, title: "Fate and faith", author: "Delight Adisa", genre: "Books", length: 141, type: "PDF", collection: "", content: "/assets/FateAndFaith.pdf", pdfUrl: "/assets/FateAndFaith.pdf", picture: "/assets/FateAndFaith.jpg" }
 ];
 
 

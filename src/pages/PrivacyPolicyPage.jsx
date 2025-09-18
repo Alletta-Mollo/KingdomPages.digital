@@ -5,14 +5,6 @@ import { Button } from '@/components/ui/button';
 import { BookOpenText, Home, Info, Mail, Menu, X, Library, Cross } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
-const navItems = [
-	{ name: 'Home', path: '/', icon: Home },
-	{ name: 'Library', path: '/library', icon: Library },
-	{ name: 'About Us', path: '/about', icon: Info },
-    { name: 'Salvation', path: '/salvation', icon: Cross },
-	{ name: 'Contact Us', path: '/contact', icon: Mail },
-];
-
 const Layout = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();

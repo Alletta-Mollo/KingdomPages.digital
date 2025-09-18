@@ -49,21 +49,23 @@ const SalvationPage = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="max-w-4xl mx-auto glassmorphism p-8 md:p-12 rounded-2xl shadow-xl aurora-card"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">The Path to Salvation</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">The Steps of Salvation</h2>
           <div className="space-y-6 text-lg text-foreground/90 leading-relaxed">
             <p>
-              The Bible teaches that salvation is a gift from God, offered freely to all who believe in His Son, Jesus Christ. It's not something we can earn through good works, but something we receive through faith.
+              The Bible teaches that salvation is a gift from God, offered freely to all who believe in His Son, Jesus Christ. It's not something we can earn through good works, but something we receive through faith shown in our confession.
             </p>
             <blockquote className="border-l-4 border-primary pl-6 py-2 italic text-muted-foreground">
-              "For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life." - John 3:16
+             "9 If you declare with your mouth, “Jesus is Lord,” and believe in your heart that God raised him from the dead, you will be saved. 10 For it is with your heart that you believe and are justified, and it is with your mouth that you profess your faith and are saved." - Romans 10: 9 - 10
             </blockquote>
             <p>
-              If you feel a stirring in your heart and wish to accept this gift, you can express your faith through a simple prayer. Prayer is just talking to God. He knows your heart, and it's the attitude of your heart that He cares about.
+              If you feel a stirring in your heart and wish to accept this precious gift, you can express your faith through saying the following Prayer. Prayer is a means of communicating to God. He knows your heart, and it's the attitude of your heart that He cares about.
             </p>
             <div className="p-6 bg-muted/50 rounded-lg">
-              <h3 className="font-semibold text-xl mb-2 text-primary">A Sinner's Prayer</h3>
+              <h3 className="font-semibold text-xl mb-2 text-primary">Prayer of Salvation</h3>
               <p className="italic">
-                "Dear Lord Jesus, I know that I am a sinner, and I ask for Your forgiveness. I believe You died for my sins and rose from the dead. I turn from my sins and invite You to come into my heart and life. I want to trust and follow You as my Lord and Savior. In Your name, Amen."
+                "O Lord God, I believe with all my heart in Jesus Christ, Son of the living God. I believe He died for me and God raised Him from the dead. I believe He’s alive today. I confess with my mouth that Jesus Christ is the Lord of my life from this day. Through Him and in His Name, I have eternal life; I’m born again. Thank you Lord, for saving my soul! I’m now a child of God. Hallelujah!”
+                
+                "Congratulations! You are now a child of God. We want to send you ministry resources to help you grow as a Christian. We would like to have your contact details so we can send you a book titled 'Now that you are born-again."
               </p>
             </div>
           </div>
@@ -84,12 +86,15 @@ const SalvationPage = () => {
                 <div className="bg-primary/10 p-3 rounded-full inline-flex items-center justify-center mb-4">
                   <BookOpen className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="text-2xl">Read Your Bible</CardTitle>
+                <CardTitle className="text-2xl">Read "Now That You Are Born Again"</CardTitle>
               </CardHeader>
               <CardContent className="p-0 text-muted-foreground">
-                <CardDescription>
-                  God's Word is a light for your path. Start by reading the Gospel of John to learn more about Jesus.
-                </CardDescription>
+               <CardDescription>
+                  Learn about the step you just took in depth by reading this informative book <em>Now That You Are Born Again</em> by <strong> Rev Dr Chris Oyakhilome</strong>. You can access it{' '}
+                  <a href="https://nowthatyouarebornagain.org" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">
+                    here
+                  </a>.
+              </CardDescription>
               </CardContent>
             </Card>
           </motion.div>
@@ -105,11 +110,11 @@ const SalvationPage = () => {
                 <div className="bg-secondary/10 p-3 rounded-full inline-flex items-center justify-center mb-4">
                   <MessageCircle className="h-8 w-8 text-secondary" />
                 </div>
-                <CardTitle className="text-2xl">Talk to God</CardTitle>
+                <CardTitle className="text-2xl">Let us know</CardTitle>
               </CardHeader>
               <CardContent className="p-0 text-muted-foreground">
                 <CardDescription>
-                  Prayer is simply talking to God. Share your heart, your thanks, and your requests with Him daily.
+                  Send us an email on <strong>admin@kingdompages.digital</strong> or submit the form on our contact us page.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -126,11 +131,11 @@ const SalvationPage = () => {
                 <div className="bg-accent/10 p-3 rounded-full inline-flex items-center justify-center mb-4">
                   <Users className="h-8 w-8 text-accent" />
                 </div>
-                <CardTitle className="text-2xl">Find a Community</CardTitle>
+                <CardTitle className="text-2xl">Find yourself connected to a church</CardTitle>
               </CardHeader>
               <CardContent className="p-0 text-muted-foreground">
                 <CardDescription>
-                  Connect with a local church or a group of believers to grow in your faith and fellowship.
+                  Connect with a Bible believing local church to grow in your faith and fellowship, we recommend finding any local <strong>Christ Embassy church</strong> aka Believers' Loveworld.
                 </CardDescription>
               </CardContent>
             </Card>

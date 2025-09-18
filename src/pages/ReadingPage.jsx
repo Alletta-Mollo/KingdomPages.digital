@@ -11,6 +11,8 @@ import { ChevronLeft, ChevronRight, Home, BookOpenText, FileText, ExternalLink, 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { v4 as uuidv4 } from 'uuid';
 import { Helmet } from 'react-helmet-async';
+import PDFFlipbook from '@/components/PDFFlipbook';
+
 
 const formatContent = (text) => {
   if (!text) return null;
@@ -181,7 +183,7 @@ const ReadingPage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="max-w-4xl mx-auto p-4 md:p-8"
+      className="text-lg leading-relaxed text-foreground/90 whitespace-pre-line max-w-none flex-grow pt-16" // Added pt-24 for top padding to prevent menu overlap
     >
       <Helmet>
         <title>{item.title} | Kingdom Pages</title>
@@ -189,7 +191,7 @@ const ReadingPage = () => {
         <meta property="og:title" content={`${item.title} | Kingdom Pages`} />
         <meta property="og:description" content={`Read "${item.title}" by ${item.author}. Part of the Kingdom Pages digital library.`} />
       </Helmet>
-      <Card className="shadow-2xl overflow-hidden glassmorphism border-primary/20">
+      <Card className="shadow-2xl overflow-hidden glassmorphism border-primary/20 relative z-10"> {/* Added relative z-10 */}
         <CardHeader className="bg-gradient-to-br from-primary/10 via-secondary/10 to-green-400/10 p-6">
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
             <div className="flex items-center space-x-2">
@@ -200,52 +202,46 @@ const ReadingPage = () => {
           </motion.div>
         </CardHeader>
         
-        <CardContent className="p-0 md:p-0 min-h-[500px] md:min-h-[70vh] flex flex-col justify-between relative overflow-hidden">
-          {item.type === 'PDF' && item.pdfUrl ? (
-            <iframe
-              src={item.pdfUrl}
-              title={item.title}
-              className="w-full h-[calc(70vh-0px)] md:h-[calc(70vh-0px)] border-0"
-              allowFullScreen
-            >
-              <p>Your browser does not support PDFs. Please download the PDF to view it: <a href={item.pdfUrl}>Download PDF</a>.</p>
-            </iframe>
-          ) : pages.length > 0 ? (
-            <div className="p-6 md:p-8 flex-grow flex flex-col justify-between">
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.div
-                  key={currentPage}
-                  custom={direction}
-                  variants={pageVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="text-lg leading-relaxed text-foreground/90 whitespace-pre-line max-w-none flex-grow"
-                  style={{ perspective: "1000px" }} 
-                >
-                  {formatContent(pages[currentPage])}
-                </motion.div>
-              </AnimatePresence>
-              
-              <div className="flex justify-between items-center mt-8 pt-6 border-t border-border/50">
-                <Button onClick={prevPage} disabled={currentPage === 0} variant="outline" className="group">
-                  <ChevronLeft size={20} className="mr-2 transition-transform duration-300 group-hover:-translate-x-1" /> Previous
-                </Button>
-                <span className="text-sm text-muted-foreground">Page {currentPage + 1} of {pages.length}</span>
-                <Button onClick={nextPage} disabled={currentPage === pages.length - 1} variant="outline" className="group">
-                  Next <ChevronRight size={20} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </div>
-            </div>
-          ) : (
-             <div className="p-6 md:p-8 flex-grow flex items-center justify-center">
-                <p className="text-muted-foreground text-xl">Content not available for this item.</p>
-             </div>
-          )}
-        </CardContent>
+    <CardContent className="p-0 md:p-0 min-h-[500px] md:min-h-[70vh] flex flex-col justify-between relative overflow-hidden">
+  {item.type === 'PDF' && item.pdfUrl ? (
+  <PDFFlipbook pdfUrl={item.pdfUrl} />
+  ) : pages.length > 0 ? (
+    <div className="p-6 md:p-8 flex-grow flex flex-col justify-between">
+      <AnimatePresence initial={false} custom={direction} mode="wait">
+        <motion.div
+          key={currentPage}
+          custom={direction}
+          variants={pageVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="text-lg leading-relaxed text-foreground/90 whitespace-pre-line max-w-none flex-grow"
+          style={{ perspective: "1000px" }} 
+        >
+          {formatContent(pages[currentPage])}
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="flex justify-between items-center mt-8 pt-6 border-t border-border/50">
+        <Button onClick={prevPage} disabled={currentPage === 0} variant="outline" className="group">
+          <ChevronLeft size={20} className="mr-2 transition-transform duration-300 group-hover:-translate-x-1" /> Previous
+        </Button>
+        <span className="text-sm text-muted-foreground">Page {currentPage + 1} of {pages.length}</span>
+        <Button onClick={nextPage} disabled={currentPage === pages.length - 1} variant="outline" className="group">
+          Next <ChevronRight size={20} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+        </Button>
+      </div>
+    </div>
+  ) : (
+    <div className="p-6 md:p-8 flex-grow flex items-center justify-center">
+      <p className="text-muted-foreground text-xl">Content not available for this item.</p>
+    </div>
+  )}
+</CardContent>
+
       </Card>
       
-      <Card className="mt-8 shadow-xl glassmorphism">
+      <Card className="mt-8 shadow-xl glassmorphism relative z-10"> {/* Added relative z-10 */}
         <CardHeader>
           <CardTitle className="flex items-center gap-2 gradient-text"><MessageCircle/> Community Comments</CardTitle>
           <CardDescription></CardDescription>
@@ -298,7 +294,7 @@ const ReadingPage = () => {
         initial={{ y: 20, opacity: 0 }} 
         animate={{ y: 0, opacity: 1 }} 
         transition={{ delay: 0.4 }}
-        className="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4"
+        className="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 relative z-10" // Added relative z-10
       >
         <Button asChild variant="ghost" className="group w-full sm:w-auto">
           <NavLink to="/library">
