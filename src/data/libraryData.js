@@ -3,6 +3,13 @@ import nothingLacking from "../assets/NothingLacking.txt?raw";
 import sightBySpeaking from "../assets/SightBySpeaking.txt?raw";
 import theSummerEverythingChanged from "../assets/TheSummerEverythingChanged.txt?raw";
 import theGoldenMansTrial from "../assets/TheGoldenMansTrail.txt?raw";
+import takingAction from "../assets/TakingAction.txt?raw";
+import aPreacherKid from "../assets/APreachersKidsStory.txt?raw";
+import myRedemption from "../assets/MyRedemption.txt?raw";
+import theGracedOne from "../assets/TheGracedOne.txt?raw";
+import theLifeManifest from "../assets/TheLifeManifest.txt?raw";
+
+
 
 const aLovedLife = "To be loved by Love Himself\nTo have the entirety of nature sing and dance to your tune\nTo be an extension of eternity\nCreated creator\nHis breath in your lungs\nHis word in your mouth\nHis works by your hands\nTo be gifted only with goodness\nGrace and mercy arrive at your home each morning to escort you on your way\nBlessings tuck you in at night";
 
@@ -64,11 +71,17 @@ export const libraryData = [
 { id: 18, title: "Almost home", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: almostHome, picture: "/assets/AlmostHome.png" },
 { id: 19, title: "Love confessions", author: "P.E.B", genre: "Poems", length: 2, type: "Poem", collection: "Eyes that see, A heart that speaks", content: loveConfessions, picture: "/assets/LoveConfessions.png" },
 
+
   // Stories
-  { id: 20, title: "Nothing Lacking", author: "Miss EJA", genre: "Stories", length: 17, type: "Stories", collection: "The Sealed Life Chronicles", content: nothingLacking, picture: "/assets/NothingLacking.png" },
-  { id: 21, title: "Sight by Speaking", author: "Miss EJA", genre: "Stories", length: 14,type: "Stories", collection: "The Sealed Life Chronicles", content: sightBySpeaking , picture: "/assets/SightBySpeaking.png" },
-  { id: 22, title: "The Summer Everything Changed", author: "Miss EJA", genre: "Stories", length: 12, type: "Stories", collection: "The Sealed Life Chronicles", content: theSummerEverythingChanged, picture: "/assets/TheSummerEverythingChanged.png" },
-  { id: 23, title: "The Golden Man's Trial", author: "Miss EJA", genre: "Stories", type: "Stories" , length: 23, collection: "The Sealed Life Chronicles", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" },
+  { id: 20, title: "Nothing lacking", author: "Miss EJA", genre: "Stories", length: 17, type: "Stories", collection: "The Sealed Life Chronicles", content: nothingLacking, picture: "/assets/NothingLacking.png" },
+  { id: 21, title: "Sight by speaking", author: "Miss EJA", genre: "Stories", length: 14,type: "Stories", collection: "The Sealed Life Chronicles", content: sightBySpeaking , picture: "/assets/SightBySpeaking.png" },
+  { id: 22, title: "The summer everything changed", author: "Miss EJA", genre: "Stories", length: 12, type: "Stories", collection: "The Sealed Life Chronicles", content: theSummerEverythingChanged, picture: "/assets/TheSummerEverythingChanged.png" },
+  { id: 23, title: "The golden man's trial", author: "Miss EJA", genre: "Stories", type: "Stories" , length: 23, collection: "The Sealed Life Chronicles", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" },
+  { id: 25, title: "Taking action", author: "Delight Adisa", genre: "Stories", length: 8, type: "Stories", collection: "", content: takingAction, picture: "" }, 
+  { id: 26, title: "A preacher's kid story", author: "Delight Adisa", genre: "Stories", length: 9, type: "Stories", collection: "", content: aPreacherKid, picture: "" },
+  { id: 27, title: "My redemption", author: "Delight Adisa", genre: "Stories", length: 6, type: "Stories", collection: "", content: myRedemption, picture: "" },
+  { id: 28, title: "The graced one", author: "Delight Adisa", genre: "Stories", length: 5, type: "Stories", collection: "", content: theGracedOne, picture: "./assets/TheGracedOne.jpeg" },
+  { id: 29, title: "The Life Manifest", author: "Miss EJA", genre: "Stories", length: 20, type: "Stories", collection: "The Sealed Life Chronicles", content: theLifeManifest, picture: "./assets/TheLifeManifest.png" },
 
   //PDF
   { id: 24, title: "Fate and faith", author: "Delight Adisa", genre: "Novels", length: 131, type: "PDF", collection: "", content: "/assets/FateAndFaith.pdf", pdfUrl: "/assets/FateAndFaith.pdf", picture: "/assets/FateAndFaith.jpg"}
