@@ -73,8 +73,8 @@ export const libraryData = [
 
 
   // Stories
-  { id: 20, title: "Nothing lacking - I", author: "Miss EJA", genre: "Stories", length: 17, type: "Stories", collection: "The Sealed Life Chronicles", content: nothingLacking, picture: "/assets/NothingLacking.png" },
-  { id: 21, title: "Sight by speaking - II", author: "Miss EJA", genre: "Stories", length: 14,type: "Stories", collection: "The Sealed Life Chronicles", content: sightBySpeaking , picture: "/assets/SightBySpeaking.jpeg" },
+  { id: 20, title: "Nothing lacking - I", author: "Miss EJA", genre: "Stories", length: 17, type: "Stories", collection: "The Sealed Life Chronicles", content: nothingLacking, picture: "/assets/NothingLacking.jpeg" },
+  { id: 21, title: "Sight by speaking - II", author: "Miss EJA", genre: "Stories", length: 14,type: "Stories", collection: "The Sealed Life Chronicles", content: sightBySpeaking , picture: "/assets/SightBySpeakingFinal.jpeg" },
   { id: 22, title: "The summer everything changed - III", author: "Miss EJA", genre: "Stories", length: 12, type: "Stories", collection: "The Sealed Life Chronicles", content: theSummerEverythingChanged, picture: "/assets/TheSummerEverythingChanged.png" },
   { id: 23, title: "The golden man's trial - IV", author: "Miss EJA", genre: "Stories", type: "Stories" , length: 23, collection: "The Sealed Life Chronicles", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" },
   { id: 25, title: "Taking action", author: "Delight Adisa", genre: "Stories", length: 8, type: "Stories", collection: "", content: takingAction, picture: "./assets/TakingAction.png" }, 
