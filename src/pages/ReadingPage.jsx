@@ -191,6 +191,7 @@ const ReadingPage = () => {
         <meta property="og:title" content={`${item.title} | Kingdom Pages`} />
         <meta property="og:description" content={`Read "${item.title}" by ${item.author}. Part of the Kingdom Pages digital library.`} />
       </Helmet>
+
       <Card className="shadow-2xl overflow-hidden glassmorphism border-primary/20 relative z-10"> {/* Added relative z-10 */}
         <CardHeader className="bg-gradient-to-br from-primary/10 via-secondary/10 to-green-400/10 p-6">
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
