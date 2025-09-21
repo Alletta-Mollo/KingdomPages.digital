@@ -184,7 +184,7 @@ const HomePage = () => {
           </h1>
 
           <p className="max-w-xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
-            <em>A sacred space for Holy Spirit inspired voices — where faith meets creativity and every page carries a word of blessing. </em>
+            <em>Enjoy stories and poems of faith, hope and love. Expect to be transported into a realm of infinite possibilities, fill your thoughts with great expectations of brighter days ahead and warm your heart with the deepest of affections as you journey through each piece. </em>
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
