@@ -160,7 +160,7 @@ const HomePage = () => {
         />
       </div>
 
-      <section id="home" className="text-center py-20 md:py-32 relative">
+      <section id="home" className="text-center py-8 md:py-2 relative">
         <motion.div
           initial={{ opacity: 0, y: -30, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -171,7 +171,7 @@ const HomePage = () => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.5, type: 'spring', stiffness: 200, damping: 20 }}
-            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6 transform -rotate-3"
+            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-6 transform -rotate-3"
           >
             <Sparkles className="w-4 h-4"/>
             Welcome Home, Kingdom Pager
@@ -183,9 +183,8 @@ const HomePage = () => {
            </span>
           </h1>
 
-
           <p className="max-w-xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
-            A sanctuary for poets, storytellers, and readers. Discover art, share your voice, and find your community.
+            <em>A sacred space for Holy Spirit inspired voices — where faith meets creativity and every page carries a word of blessing. </em>
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
@@ -201,35 +200,31 @@ const HomePage = () => {
             </Button>
           </div>
         </motion.div>
-      </section>
-      
-      <section className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+
         <WavySeparator direction="down" className="text-background" />
-        <div className="py-24 bg-background relative z-10">
+        <div className="py-10 bg-background relative z-10">
           <h3 className="text-center text-xl font-semibold mb-8 text-muted-foreground">Discover Our Collection</h3>
           <Marquee />
         </div>
         <WavySeparator direction="up" className="text-background" />
-      </section>
-
-      <section id="features" className="container mx-auto px-4 relative z-10">
+         <section id="features" className="container mx-auto px-4 relative z-10">
          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">A Canvas for Creativity</h2>
-            <p className="max-w-2xl mx-auto text-muted-foreground"> Everything you need to immerse yourself in the world of Holy Spirit inspiredliterature and art.</p>
+            <p className="max-w-2xl mx-auto text-muted-foreground"> Everything you need to immerse yourself in the world of Holy Spirit inspired literary work.</p>
          </div>
          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
             <FeatureCard 
               icon={BookOpen}
               title="Curated Library"
-              description="Explore a diverse collection of poems, stories, and comics from talented artists around the globe."
+              description="Explore literature and visual works crafted by Holy Spirit-led artists — each piece rooted in faith and purpose."
               delay={0.2}
               link="/library"
               linkText="Start Reading"
             />
-            <FeatureCard 
+            <FeatureCard x
               icon={Feather}
               title="Share Your Story"
-              description="Have a story to tell? We'd love to hear it. Connect with us to get your work featured on our platform."
+              description="Has our Spirit-led platform personally inspired you in a way that you would like to share with us?"
               delay={0.4}
               link="/contact"
               linkText="Get in Touch"
@@ -237,14 +232,14 @@ const HomePage = () => {
             <FeatureCard 
               icon={MessageSquare}
               title="Join the Dialogue"
-              description="Connect with fellow readers and creators. Discuss works, share interpretations, and build community."
+              description="Engage with a vibrant community. Share interpretations, explore inspired writings, and discuss the topics that matter most."
               delay={0.6}
               link="/library"
               linkText="Start Commenting"
             />
          </div>
       </section>
-      
+
       <section className="container mx-auto text-center py-20 relative z-10">
         <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -255,7 +250,7 @@ const HomePage = () => {
         >
           <h2 className="text-4xl font-bold mb-4 gradient-text">Ready to Begin Your Next Chapter?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-muted-foreground">
-            The next story that will change your perspective is just a click away.
+            A divine perspective awaits in every Spirit-inspired story — and it’s just a click away.
           </p>
           <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
              <NavLink to= "/library">
@@ -264,6 +259,7 @@ const HomePage = () => {
           </Button>
         </motion.div>
       </section>
+      </section>   
     </div>
   );
 };

@@ -89,7 +89,7 @@ const ContactPage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
         >
-          We'd love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.
+          We would love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.
         </motion.p>
       </section>
 
@@ -104,7 +104,7 @@ const ContactPage = () => {
           >
             <h2 className="text-3xl font-bold mb-6 gradient-text">Contact Information</h2>
             <ContactInfoCard icon={Mail} title="Email Us" content="admin@kingdompages.digital" href="mailto:admin@kingdompages.digital" delay={0.1} />
-            <ContactInfoCard icon={Phone} title="Call Us" content={<span>Kingschat <em>@Kingdompages</em></span>} href="" delay={0.2} />
+            <ContactInfoCard icon={Phone} title="Call Us" content={<span>on Kingschat <em>- @Kingdompages</em></span>} href="" delay={0.2} />
             <ContactInfoCard icon={MapPin} title="Our Office" content="Nigeria" delay={0.3} />
           </motion.div>
 

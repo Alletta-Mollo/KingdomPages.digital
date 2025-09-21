@@ -36,12 +36,12 @@ const SalvationPage = () => {
             <span className="gradient-text">A Step of Faith</span>
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
-            Embracing a new beginning is the most courageous journey one can take. We are here to walk alongside you.
+             <em>I am ready to receive Jesus Christ as my Lord and Saviour, and start my walk of faith with Him.</em>
           </p>
         </motion.div>
-      </section>
+   
 
-      <section className="container mx-auto px-4">
+     
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,11 +68,12 @@ const SalvationPage = () => {
                 "Congratulations! You are now a child of God. We want to send you ministry resources to help you grow as a Christian. We would like to have your contact details so we can send you a book titled 'Now that you are born-again."
               </p>
             </div>
+            <strong><center>Congratulations! You are now a child of God. Welcome to this great family!</center></strong>
           </div>
         </motion.div>
       </section>
 
-      <section className="container mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 py-2">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Your Next Steps</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <motion.div

@@ -65,7 +65,7 @@ const LibraryPage = () => {
   };
 
   return (
-    <section id="library" className="space-y-8 scroll-mt-20 pt-32"> 
+    <section id="library" className="space-y-8 scroll-mt-20 pt-16"> 
       <motion.div
         initial={{ opacity: 0, y: 20}}
         whileInView={{ opacity: 1, y: 0 }}

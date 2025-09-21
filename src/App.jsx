@@ -65,7 +65,8 @@ function App() {
       <Router>
         <ScrollToTop />
         <Helmet>
-          <title>Kingdom Pages - Inspiring Digital Stories</title>
+          <title>Kingdom Pages – Faith-Based Digital Library</title>
+          <link rel="icon" href="/./KingdomPagesLogo.jpg" type="image/jpg"/>
           <meta name="description" content="Discover a curated collection of Christian digital material: uplifting books, engaging comics, and inspiring stories for all ages." />
           <meta property="og:title" content="Kingdom Pages - Inspiring Digital Stories" />
           <meta property="og:description" content="Nourishing faith and inspiring minds through a curated collection of Christian digital literature." />

@@ -59,7 +59,7 @@ const AboutPage = () => {
           About Kingdom Pages
         </motion.h1>
         <motion.p
-          className="text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto"
+          className="py-12 text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -135,7 +135,7 @@ const AboutPage = () => {
                 delay={0.2}
               />
               <TimelineItem
-                date="2024 - Q3"
+                date="2025 - Q3"
                 title="Official Website Launch "
                 description= "The library is open. Every reader can access all inspired material"
                 icon={Users}
@@ -150,32 +150,12 @@ const AboutPage = () => {
       <section className="py-12 md:py-16 bg-card/80 rounded-xl shadow-xl glassmorphism">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Impact by Numbers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto px-4">
-          <StatCard icon={BookHeart} value="23+" label="Digital Items" color="border-primary" delay={0.1} />
+          <StatCard icon={BookHeart} value="28+" label="Digital Items" color="border-primary" delay={0.1} />
           <StatCard icon={Users} value="+" label="Active Readers" color="border-secondary" delay={0.3} />
-          <StatCard icon={Sparkles} value="2+" label="Contributing Authors" color="border-accent" delay={0.5} />
+          <StatCard icon={Sparkles} value="3+" label="Contributing Authors" color="border-accent" delay={0.5} />
         </div>
       </section>
-      
-      <section className="text-center">
-        <motion.h2 
-          className="text-3xl md:text-4xl font-bold mb-6 gradient-text"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Join Our Story
-        </motion.h2>
-        <motion.p 
-          className="text-lg text-foreground/80 max-w-xl mx-auto mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Become a part of the Kingdom Pages family. Explore, learn, and grow with us.
-        </motion.p>
-      </section>
+    
     </div>
   );
 };

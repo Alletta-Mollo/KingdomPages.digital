@@ -1,0 +1,2 @@
+- Home page: Reduce the distance between the footer and the last block 
+- Salvation: after the page congratulatory message add that next steps follow at the bottom
