@@ -73,15 +73,15 @@ export const libraryData = [
 
 
   // Stories
-  { id: 20, title: "Nothing lacking", author: "Miss EJA", genre: "Stories", length: 17, type: "Stories", collection: "The Sealed Life Chronicles", content: nothingLacking, picture: "/assets/NothingLacking.png" },
-  { id: 21, title: "Sight by speaking", author: "Miss EJA", genre: "Stories", length: 14,type: "Stories", collection: "The Sealed Life Chronicles", content: sightBySpeaking , picture: "/assets/SightBySpeaking.png" },
-  { id: 22, title: "The summer everything changed", author: "Miss EJA", genre: "Stories", length: 12, type: "Stories", collection: "The Sealed Life Chronicles", content: theSummerEverythingChanged, picture: "/assets/TheSummerEverythingChanged.png" },
-  { id: 23, title: "The golden man's trial", author: "Miss EJA", genre: "Stories", type: "Stories" , length: 23, collection: "The Sealed Life Chronicles", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" },
-  { id: 25, title: "Taking action", author: "Delight Adisa", genre: "Stories", length: 8, type: "Stories", collection: "", content: takingAction, picture: "" }, 
-  { id: 26, title: "A preacher's kid story", author: "Delight Adisa", genre: "Stories", length: 9, type: "Stories", collection: "", content: aPreacherKid, picture: "" },
-  { id: 27, title: "My redemption", author: "Delight Adisa", genre: "Stories", length: 6, type: "Stories", collection: "", content: myRedemption, picture: "" },
+  { id: 20, title: "Nothing lacking - I", author: "Miss EJA", genre: "Stories", length: 17, type: "Stories", collection: "The Sealed Life Chronicles", content: nothingLacking, picture: "/assets/NothingLacking.png" },
+  { id: 21, title: "Sight by speaking - II", author: "Miss EJA", genre: "Stories", length: 14,type: "Stories", collection: "The Sealed Life Chronicles", content: sightBySpeaking , picture: "/assets/SightBySpeaking.png" },
+  { id: 22, title: "The summer everything changed - III", author: "Miss EJA", genre: "Stories", length: 12, type: "Stories", collection: "The Sealed Life Chronicles", content: theSummerEverythingChanged, picture: "/assets/TheSummerEverythingChanged.png" },
+  { id: 23, title: "The golden man's trial - IV", author: "Miss EJA", genre: "Stories", type: "Stories" , length: 23, collection: "The Sealed Life Chronicles", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" },
+  { id: 25, title: "Taking action", author: "Delight Adisa", genre: "Stories", length: 8, type: "Stories", collection: "", content: takingAction, picture: "./assets/TakingAction.png" }, 
+  { id: 26, title: "A preacher's kid story", author: "Delight Adisa", genre: "Stories", length: 9, type: "Stories", collection: "", content: aPreacherKid, picture: "./assets/APreachersKidsStory.jpeg" },
+  { id: 27, title: "My redemption", author: "Delight Adisa", genre: "Stories", length: 6, type: "Stories", collection: "", content: myRedemption, picture: "./assets/MyRedemption.jpeg" },
   { id: 28, title: "The graced one", author: "Delight Adisa", genre: "Stories", length: 5, type: "Stories", collection: "", content: theGracedOne, picture: "./assets/TheGracedOne.jpeg" },
-  { id: 29, title: "The Life Manifest", author: "Miss EJA", genre: "Stories", length: 20, type: "Stories", collection: "The Sealed Life Chronicles", content: theLifeManifest, picture: "./assets/TheLifeManifest.png" },
+  { id: 29, title: "The Life Manifest - V", author: "Miss EJA", genre: "Stories", length: 20, type: "Stories", collection: "The Sealed Life Chronicles", content: theLifeManifest, picture: "./assets/TheLifeManifest.png" },
 
   //PDF
   { id: 24, title: "Fate and faith", author: "Delight Adisa", genre: "Novels", length: 131, type: "PDF", collection: "", content: "/assets/FateAndFaith.pdf", pdfUrl: "/assets/FateAndFaith.pdf", picture: "/assets/FateAndFaith.jpg"}
