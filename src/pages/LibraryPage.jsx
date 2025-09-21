@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Slider } from "@/components/ui/slider";
-import { Search, Filter, BookOpen, Clock, FileText, Book, Frown } from 'lucide-react';
+import { Search, Filter, Clock, FileText, Book, Frown } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { libraryData } from '@/data/libraryData';
 
@@ -46,6 +46,16 @@ const LibraryPage = () => {
     return items;
   }, [searchTerm, selectedGenre, selectedAuthor, lengthRange, sortBy]);
 
+  const groupedByGenre = useMemo(() => {
+    const groups = {};
+    filteredAndSortedData.forEach(item => {
+      const genre = item.genre || 'Uncategorized';
+      if (!groups[genre]) groups[genre] = [];
+      groups[genre].push(item);
+    });
+    return groups;
+  }, [filteredAndSortedData]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -65,9 +75,9 @@ const LibraryPage = () => {
   };
 
   return (
-    <section id="library" className="space-y-8 scroll-mt-20 pt-16"> 
+    <section id="library" className="space-y-8 scroll-mt-20 pt-16">
       <motion.div
-        initial={{ opacity: 0, y: 20}}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
@@ -79,7 +89,7 @@ const LibraryPage = () => {
             <Filter size={18} /> {showFilters ? "Hide" : "Show"} Filters
           </Button>
         </div>
-        
+
         <div className="relative mb-6">
           <Input
             type="text"
@@ -91,7 +101,7 @@ const LibraryPage = () => {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         </div>
 
-        <motion.div 
+        <motion.div
           className={`grid md:grid-cols-2 lg:grid-cols-4 gap-4 ${showFilters || window.innerWidth >= 768 ? 'grid' : 'hidden'}`}
           initial={false}
           animate={showFilters || window.innerWidth >= 768 ? "visible" : "hidden"}
@@ -127,7 +137,7 @@ const LibraryPage = () => {
               </SelectContent>
             </Select>
           </div>
-          
+
           <div className="lg:col-span-2">
             <Label htmlFor="length-slider" className="text-sm font-medium text-foreground/80">
               Length (pages/issues): {lengthRange[0]} - {lengthRange[1]}
@@ -160,45 +170,50 @@ const LibraryPage = () => {
         </motion.div>
       </motion.div>
 
-      {filteredAndSortedData.length > 0 ? (
-        <motion.div 
-          className="grid grid-auto-fit gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {filteredAndSortedData.map(item => (
-            <motion.div key={item.id} variants={itemVariants}>
-              <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/80 glassmorphism transform hover:-translate-y-1">
-                <CardHeader className="p-0">
-                  <NavLink to={`/read/${item.id}`} className="block">
-                    <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
-                      <img src={item.picture} alt={item.title} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                  </NavLink>
-                </CardHeader>
-                <CardContent className="p-4 flex-grow">
-                  <CardTitle className="text-xl mb-1 gradient-text">{item.title}</CardTitle>
-                  <CardDescription className="text-sm text-muted-foreground mb-2">By {item.author}</CardDescription>
-                  <div className="flex items-center space-x-4 text-xs text-foreground/70">
-                    {item.type === 'PDF' ? (
-                      <span className="flex items-center"><FileText size={14} className="mr-1 text-red-500"/> {item.type}</span>
-                    ) : (
-                      <span className="flex items-center"><Book size={14} className="mr-1 text-primary"/> {item.type}</span>
-                    )}
-                    <span className="flex items-center"><Clock size={14} className="mr-1 text-secondary"/> {item.length} pages</span>
-                  </div>
-                </CardContent>
-                <CardFooter className="p-4 border-t border-border/50">
-                 <CardDescription className="text-xs mb-1 gradient-text">{item.collection}</CardDescription>
-                </CardFooter>
-              </Card>
+      {Object.keys(groupedByGenre).length > 0 ? (
+        Object.entries(groupedByGenre).map(([genre, items]) => (
+          <div key={genre} className="space-y-4">
+            <h2 className="text-2xl font-semibold gradient-text">{genre}</h2>
+            <motion.div
+              className="flex overflow-x-auto space-x-4 pb-4 snap-x snap-mandatory"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {items.map(item => (
+                <motion.div key={item.id} variants={itemVariants} className="min-w-[250px] max-w-[300px] flex-shrink-0 snap-start">
+                  <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/80 glassmorphism transform hover:-translate-y-1">
+                    <CardHeader className="p-0">
+                      <NavLink to={`/read/${item.id}`} className="block">
+                        <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
+                         <img src={item.picture} alt={item.title} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      </NavLink>
+                    </CardHeader>
+                    <CardContent className="p-4 flex-grow">
+                      <CardTitle className="text-xl mb-1 gradient-text">{item.title}</CardTitle>
+                      <CardDescription className="text-sm text-muted-foreground mb-2">By {item.author}</CardDescription>
+                      <div className="flex items-center space-x-4 text-xs text-foreground/70">
+                        {item.type === 'PDF' ? (
+                          <span className="flex items-center"><FileText size={14} className="mr-1 text-red-500" /> {item.type}</span>
+                        ) : (
+                          <span className="flex items-center"><Book size={14} className="mr-1 text-primary" /> {item.type}</span>
+                        )}
+                        <span className="flex items-center"><Clock size={14} className="mr-1 text-secondary" /> {item.length} pages</span>
+                      </div>
+                    </CardContent>
+                    <CardFooter className="p-4 border-t border-border/50">
+                      <CardDescription className="text-xs mb-1 gradient-text">{item.collection}</CardDescription>
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          </div>
+        ))
       ) : (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -219,3 +234,4 @@ const LibraryPage = () => {
 };
 
 export default LibraryPage;
+
