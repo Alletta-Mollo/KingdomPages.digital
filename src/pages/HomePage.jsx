@@ -240,7 +240,7 @@ const HomePage = () => {
          </div>
       </section>
 
-      <section className="container mx-auto text-center py-20 relative z-10">
+      {/* <section className="container mx-auto text-center py-20 relative z-10">
         <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -258,7 +258,7 @@ const HomePage = () => {
             </NavLink>
           </Button>
         </motion.div>
-      </section>
+      </section> */}
       </section>   
     </div>
   );

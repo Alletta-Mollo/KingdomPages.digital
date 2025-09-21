@@ -111,7 +111,7 @@ const AboutPage = () => {
           </motion.div>
         </div>
       </section>
-      
+{/*       
       <section className="relative py-12 -mx-4 sm:-mx-6 lg:-mx-8">
         <WavySeparator direction="down" className="text-card" />
         <div className="bg-card py-24 relative z-10">
@@ -139,13 +139,13 @@ const AboutPage = () => {
                 title="Official Website Launch "
                 description= "The library is open. Every reader can access all inspired material"
                 icon={Users}
-                align="right"
+                align="left"
                 delay={0.3}
               />
             </div>
         </div>
         <WavySeparator direction="up" className="text-card" />
-      </section>
+      </section> */}
 
       <section className="py-12 md:py-16 bg-card/80 rounded-xl shadow-xl glassmorphism">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Impact by Numbers</h2>
