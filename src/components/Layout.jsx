@@ -138,7 +138,7 @@ const Layout = ({ children }) => {
         </AnimatePresence>
       </main>
 
-			<footer className="relative mt-12 pt-24 pb-12 text-center text-muted-foreground">
+		<footer className="relative mt-0 pt-1 pb-1 text-center text-muted-foreground">
         <WavySeparator direction="up" className="text-background" />
 				<motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -146,12 +146,11 @@ const Layout = ({ children }) => {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="relative"
         >
-					<div className="flex justify-center items-center space-x-2 mb-4">
+		 <div className="flex justify-center items-center space-x-2 mb-4">
             <span className="text-sm">Kingdom Pages &copy; {new Date().getFullYear()}</span>
           </div>
-					<p className="text-xs">Inspiring faith through digital stories.</p>
+			   <p className="text-xs">Inspiring faith through digital stories.</p>
           <div className="mt-4 space-x-4">
-            <NavLink to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</NavLink>
             <NavLink to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</NavLink>
           </div>
 				</motion.div>

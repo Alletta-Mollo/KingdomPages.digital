@@ -131,8 +131,8 @@ const Layout = ({ children }) => {
             <span className="text-sm">Kingdom Pages &copy; {new Date().getFullYear()}</span>
           </div>
 					<p className="text-xs">Inspiring faith through digital stories.</p>
-          <div className="mt-4 space-x-4">
-            <NavLink to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</NavLink>
+          <div className="mt-1 space-x-4">
+
             <NavLink to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</NavLink>
           </div>
 				</motion.div>
