@@ -44,7 +44,7 @@ const loveConfessions = "Lord I hope I put a smile on your face everyday\nBecaus
 
 
 export const libraryData = [
-  { id: 1, title: "A loved life", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: aLovedLife, picture: "./assets/ALovedLife.png" },
+{ id: 1, title: "A loved life", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: aLovedLife, picture: "./assets/ALovedLife.png" },
 { id: 2, title: "A watered garden", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: aWateredGarden, picture: "/assets/AWateredGarden.png" },
 { id: 3, title: "Salt preserved", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: saltPreserved, picture: "/assets/SaltPreserved.png" },
 { id: 4, title: "Strength", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: strength, picture: "/assets/Strength.png" },
