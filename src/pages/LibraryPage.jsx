@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useMemo, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -19,7 +18,7 @@ const LibraryPage = () => {
   const [selectedAuthor, setSelectedAuthor] = useState('All');
   const [lengthRange, setLengthRange] = useState([0, 200]);
   const [sortBy, setSortBy] = useState('title_asc');
-  const [showFilters, setShowFilters] = useState(false);
+  const scrollRefs = useRef({});
 
   const filteredAndSortedData = useMemo(() => {
     let items = libraryData;
@@ -56,37 +55,21 @@ const LibraryPage = () => {
     return groups;
   }, [filteredAndSortedData]);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
+  const scrollGenre = (genre, direction) => {
+    const container = scrollRefs.current[genre];
+    if (container) {
+      const scrollAmount = direction === 'left' ? -300 : 300;
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
   return (
-    <section id="library" className="space-y-8 scroll-mt-20 pt-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="p-6 md:p-8 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-xl shadow-lg glassmorphism"
-      >
+    <section id="library" className="space-y-8 scroll-mt-20 pt-16 px-4">
+      <div className="p-6 md:p-8 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-xl shadow-lg glassmorphism">
         <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
           <h1 className="text-4xl font-bold gradient-text">Our Digital Library</h1>
-          <Button onClick={() => setShowFilters(!showFilters)} variant="outline" className="md:hidden flex items-center gap-2">
-            <Filter size={18} /> {showFilters ? "Hide" : "Show"} Filters
+          <Button variant="outline" className="md:hidden flex items-center gap-2">
+            <Filter size={18} /> Filters
           </Button>
         </div>
 
@@ -101,15 +84,7 @@ const LibraryPage = () => {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         </div>
 
-        <motion.div
-          className={`grid md:grid-cols-2 lg:grid-cols-4 gap-4 ${showFilters || window.innerWidth >= 768 ? 'grid' : 'hidden'}`}
-          initial={false}
-          animate={showFilters || window.innerWidth >= 768 ? "visible" : "hidden"}
-          variants={{
-            visible: { opacity: 1, height: 'auto', transition: { duration: 0.3 } },
-            hidden: { opacity: 0, height: 0, transition: { duration: 0.3 } }
-          }}
-        >
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <div>
             <Label htmlFor="genre-select" className="text-sm font-medium text-foreground/80">Genre</Label>
             <Select value={selectedGenre} onValueChange={setSelectedGenre}>
@@ -167,58 +142,55 @@ const LibraryPage = () => {
               </SelectContent>
             </Select>
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
-      {Object.keys(groupedByGenre).length > 0 ? (
-        Object.entries(groupedByGenre).map(([genre, items]) => (
-          <div key={genre} className="space-y-4">
-            <h2 className="text-2xl font-semibold gradient-text">{genre}</h2>
-            <motion.div
-              className="flex overflow-x-auto space-x-4 pb-4 snap-x snap-mandatory"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {items.map(item => (
-                <motion.div key={item.id} variants={itemVariants} className="min-w-[250px] max-w-[300px] flex-shrink-0 snap-start">
-                  <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/80 glassmorphism transform hover:-translate-y-1">
-                    <CardHeader className="p-0">
-                      <NavLink to={`/read/${item.id}`} className="block">
-                        <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
-                         <img src={item.picture} alt={item.title} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
-                      </NavLink>
-                    </CardHeader>
-                    <CardContent className="p-4 flex-grow">
-                      <CardTitle className="text-xl mb-1 gradient-text">{item.title}</CardTitle>
-                      <CardDescription className="text-sm text-muted-foreground mb-2">By {item.author}</CardDescription>
-                      <div className="flex items-center space-x-4 text-xs text-foreground/70">
-                        {item.type === 'PDF' ? (
-                          <span className="flex items-center"><FileText size={14} className="mr-1 text-red-500" /> {item.type}</span>
-                        ) : (
-                          <span className="flex items-center"><Book size={14} className="mr-1 text-primary" /> {item.type}</span>
-                        )}
-                        <span className="flex items-center"><Clock size={14} className="mr-1 text-secondary" /> {item.length} pages</span>
-                      </div>
-                    </CardContent>
-                    <CardFooter className="p-4 border-t border-border/50">
-                      <CardDescription className="text-xs mb-1 gradient-text">{item.collection}</CardDescription>
-                    </CardFooter>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
+      {Object.entries(groupedByGenre).map(([genre, items]) => (
+        <div key={genre} className="space-y-4">
+          <h2 className="text-2xl font-semibold gradient-text">{genre}</h2>
+
+          <div
+            ref={el => (scrollRefs.current[genre] = el)}
+            className="flex space-x-4 overflow-x-auto pb-2 scroll-smooth"
+          >
+            {items.map(item => (
+              <Card key={item.id} className="min-w-[250px] max-w-[300px] flex-shrink-0">
+                <CardHeader className="p-0">
+                  <NavLink to={`/read/${item.id}`} className="block">
+                    <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
+                      <img src={item.picture} alt={item.title} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </NavLink>
+                </CardHeader>
+                <CardContent className="p-4 flex-grow">
+                  <CardTitle className="text-xl mb-1 gradient-text">{item.title}</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground mb-2">By {item.author}</CardDescription>
+                  <div className="flex items-center space-x-4 text-xs text-foreground/70">
+                    {item.type === 'PDF' ? (
+                      <span className="flex items-center"><FileText size={14} className="mr-1 text-red-500" /> {item.type}</span>
+                    ) : (
+                      <span className="flex items-center"><Book size={14} className="mr-1 text-primary" /> {item.type}</span>
+                    )}
+                                 <span className="flex items-center"><Clock size={14} className="mr-1 text-secondary" /> {item.length} pages</span>
+                  </div>
+                </CardContent>
+                <CardFooter className="p-4 border-t border-border/50">
+                  <CardDescription className="text-xs mb-1 gradient-text">{item.collection}</CardDescription>
+                </CardFooter>
+              </Card>
+            ))}
           </div>
-        ))
-      ) : (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-center py-16 px-6 bg-card/50 rounded-xl glassmorphism"
-        >
+
+          {/* Mobile arrows at the bottom */}
+          <div className="flex justify-between items-center md:hidden mt-2">
+            <Button onClick={() => scrollGenre(genre, 'left')} variant="ghost">←</Button>
+            <Button onClick={() => scrollGenre(genre, 'right')} variant="ghost">→</Button>
+          </div>
+        </div>
+      ))}
+
+      {filteredAndSortedData.length === 0 && (
+        <div className="text-center py-16 px-6 bg-card/50 rounded-xl glassmorphism">
           <Frown size={48} className="mx-auto text-primary mb-4" />
           <h2 className="text-2xl font-semibold text-foreground mb-2">Nothing Found</h2>
           <p className="text-lg text-muted-foreground">
@@ -227,11 +199,10 @@ const LibraryPage = () => {
           <p className="text-muted-foreground mt-1">
             Please try adjusting your filters or search term.
           </p>
-        </motion.div>
+        </div>
       )}
     </section>
   );
 };
 
 export default LibraryPage;
-
