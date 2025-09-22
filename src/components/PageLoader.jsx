@@ -38,14 +38,6 @@ const PageLoader = () => {
       <motion.div variants={bookIconVariants}>
         <BookOpen className="w-16 h-16 text-primary" strokeWidth={1.5} />
       </motion.div>
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 0.2 } }}
-        exit={{ opacity: 0 }}
-        className="mt-4 text-md font-semibold text-muted-foreground"
-      >
-        Opening the next chapter...
-      </motion.p>
     </motion.div>
   );
 };
