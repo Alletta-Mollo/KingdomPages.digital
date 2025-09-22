@@ -91,7 +91,7 @@ const CommentPage = () => {
       >
         <h1 className="text-5xl md:text-6xl font-extrabold mb-6 gradient-text">Community</h1>
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
-          Share your thoughts, testimonies, or Spirit-led encouragement. Every comment is a seed of light.
+          Share your thoughts, reflections and testimonies for everyone to see.
         </p>
       </motion.div>
 
