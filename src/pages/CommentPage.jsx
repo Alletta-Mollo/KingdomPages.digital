@@ -219,12 +219,12 @@ const CommentPage = () => {
               rows={3}
               className="w-full p-2 rounded bg-background/70 border border-muted"
             />
-            <input
+            {/* <input
               type="file"
               accept="image/*"
               onChange={handleFileChange}
               className="w-full p-2 bg-background/70 rounded border border-muted"
-            />
+            /> */}
             <button
               type="submit"
               className="w-full py-2 px-4 rounded bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:opacity-90 transition"

@@ -204,7 +204,7 @@ const LibraryPage = () => {
         </div>
       )}
      <button
-       onClick={() => window.location.href = '/community'}
+       onClick={() => window.location.href = '/comment-page'}
        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-secondary text-white p-4 rounded-full shadow-xl hover:scale-105 transition-all"
        aria-label="Go to Community"
       >
