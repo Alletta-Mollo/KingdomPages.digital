@@ -10,10 +10,12 @@ import ReadingPage from '@/pages/ReadingPage';
 import SalvationPage from '@/pages/SalvationPage';
 import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage';
 import TermsOfServicePage from '@/pages/TermsOfServicePage';
+import CommentPage from './pages/CommentPage';
 import { Toaster } from '@/components/ui/toaster';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import PageLoader from '@/components/PageLoader';
 import { AnimatePresence } from 'framer-motion';
+
 
 const AppContent = () => {
   const location = useLocation();
@@ -49,7 +51,7 @@ const AppContent = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/salvation" element={<SalvationPage />} />
             <Route path="/read/:itemId" element={<ReadingPage />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/comment-page" element={<CommentPage />} />
             <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           </Routes>
         </Layout>
@@ -71,6 +73,7 @@ function App() {
           <meta property="og:title" content="Kingdom Pages - Inspiring Digital Stories" />
           <meta property="og:description" content="Nourishing faith and inspiring minds through a curated collection of Christian digital literature." />
         </Helmet>
+
         <AppContent />
         <Toaster />
       </Router>

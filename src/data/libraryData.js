@@ -51,40 +51,39 @@ const loveConfessions = "Lord I hope I put a smile on your face everyday\nBecaus
 
 
 export const libraryData = [
-{ id: 1, title: "A loved life", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: aLovedLife, picture: "./assets/ALovedLife.png" },
-{ id: 2, title: "A watered garden", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: aWateredGarden, picture: "/assets/AWateredGarden.png" },
-{ id: 3, title: "Salt preserved", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: saltPreserved, picture: "/assets/SaltPreserved.png" },
-{ id: 4, title: "Strength", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: strength, picture: "/assets/Strength.png" },
-{ id: 5, title: "Blooming love", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: bloomingLove, picture: "/assets/BloomingLove.png" },
-{ id: 6, title: "Cream your dreams", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: creamYourDreams, picture: "/assets/CreamYourDreams.png" },
-{ id: 7, title: "Undefeated", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: undefeated, picture: "/assets/Undefeated.png" },
-{ id: 8, title: "Discernment", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: discernment, picture: "/assets/Discernment.png" },
-{ id: 9, title: "Strange beauty", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: strangeBeauty, picture: "/assets/StrangeBeauty.png" },
-{ id: 10, title: "Preserved for purpose", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: preservedForPurpose, picture: "/assets/PreservedForPurpose.png" },
-{ id: 11, title: "New year, new me", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: newYearNewMe, picture: "/assets/NewYearNewMe.png" },
-{ id: 12, title: "A head in the clouds", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: aHeadInTheClouds, picture: "/assets/AHeadInTheClouds.png" },
-{ id: 13, title: "Real love", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: realLove, picture: "/assets/RealLove.png" },
-{ id: 14, title: "Beyond the senses", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: beyondTheSenses, picture: "assets/BeyondTheSenses.png" },
-{ id: 15, title: "Following the script", author: "P.E.B", genre: "Poems", length: 2, type: "Poem", collection: "Eyes that see, A heart that speaks", content: followingTheScript, picture: "/assets/FollowingTheScript.png" },
-{ id: 16, title: "Revival", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: revival, picture: "/assets/Revival.png" },
-{ id: 17, title: "Expressions of love", author: "P.E.B", genre: "Poems", length: 2, type: "Poem", collection: "Eyes that see, A heart that speaks", content: expressionsOfLove, picture: "/assets/ExpressionsOfLove.png" },
-{ id: 18, title: "Almost home", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes that see, A heart that speaks", content: almostHome, picture: "/assets/AlmostHome.png" },
-{ id: 19, title: "Love confessions", author: "P.E.B", genre: "Poems", length: 2, type: "Poem", collection: "Eyes that see, A heart that speaks", content: loveConfessions, picture: "/assets/LoveConfessions.png" },
-
+  { id: 1, title: "A Loved Life", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: aLovedLife, picture: "./assets/ALovedLife.png" },
+  { id: 2, title: "A Watered Garden", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: aWateredGarden, picture: "/assets/AWateredGarden.png" },
+  { id: 3, title: "Salt Preserved", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: saltPreserved, picture: "/assets/SaltPreserved.png" },
+  { id: 4, title: "Strength", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: strength, picture: "/assets/Strength.png" },
+  { id: 5, title: "Blooming Love", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: bloomingLove, picture: "/assets/BloomingLove.png" },
+  { id: 6, title: "Cream Your Dreams", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: creamYourDreams, picture: "/assets/CreamYourDreams.png" },
+  { id: 7, title: "Undefeated", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: undefeated, picture: "/assets/Undefeated.png" },
+  { id: 8, title: "Discernment", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: discernment, picture: "/assets/Discernment.png" },
+  { id: 9, title: "Strange Beauty", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: strangeBeauty, picture: "/assets/StrangeBeauty.png" },
+  { id: 10, title: "Preserved for Purpose", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: preservedForPurpose, picture: "/assets/PreservedForPurpose.png" },
+  { id: 11, title: "New Year, New Me", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: newYearNewMe, picture: "/assets/NewYearNewMe.png" },
+  { id: 12, title: "A Head In The Clouds", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: aHeadInTheClouds, picture: "/assets/AHeadInTheClouds.png" },
+  { id: 13, title: "Real Love", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: realLove, picture: "/assets/RealLove.png" },
+  { id: 14, title: "Beyond The Senses", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: beyondTheSenses, picture: "assets/BeyondTheSenses.png" },
+  { id: 15, title: "Following The Script", author: "P.E.B", genre: "Poems", length: 2, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: followingTheScript, picture: "/assets/FollowingTheScript.png" },
+  { id: 16, title: "Revival", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: revival, picture: "/assets/Revival.png" },
+  { id: 17, title: "Expressions Of Love", author: "P.E.B", genre: "Poems", length: 2, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: expressionsOfLove, picture: "/assets/ExpressionsOfLove.png" },
+  { id: 18, title: "Almost Home", author: "P.E.B", genre: "Poems", length: 1, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: almostHome, picture: "/assets/AlmostHome.png" },
+  { id: 19, title: "Love Confessions", author: "P.E.B", genre: "Poems", length: 2, type: "Poem", collection: "Eyes That See, A Heart That Speaks", content: loveConfessions, picture: "/assets/LoveConfessions.png" },
 
   // Stories
-  { id: 20, title: "Nothing lacking - I", author: "Miss EJA", genre: "Stories", length: 17, type: "Stories", collection: "The Sealed Life Chronicles", content: nothingLacking, picture: "/assets/NothingLacking.jpeg" },
-  { id: 21, title: "Sight by speaking - II", author: "Miss EJA", genre: "Stories", length: 14,type: "Stories", collection: "The Sealed Life Chronicles", content: sightBySpeaking , picture: "/assets/SightBySpeakingFinal.jpeg" },
-  { id: 22, title: "The summer everything changed - III", author: "Miss EJA", genre: "Stories", length: 12, type: "Stories", collection: "The Sealed Life Chronicles", content: theSummerEverythingChanged, picture: "/assets/TheSummerEverythingChanged.png" },
-  { id: 23, title: "The golden man's trial - IV", author: "Miss EJA", genre: "Stories", type: "Stories" , length: 23, collection: "The Sealed Life Chronicles", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" },
-  { id: 25, title: "Taking action", author: "Delight Adisa", genre: "Stories", length: 8, type: "Stories", collection: "", content: takingAction, picture: "./assets/TakingAction.png" }, 
-  { id: 26, title: "A preacher's kid story", author: "Delight Adisa", genre: "Stories", length: 9, type: "Stories", collection: "", content: aPreacherKid, picture: "./assets/APreachersKidsStory.jpeg" },
-  { id: 27, title: "My redemption", author: "Delight Adisa", genre: "Stories", length: 6, type: "Stories", collection: "", content: myRedemption, picture: "./assets/MyRedemption.jpeg" },
-  { id: 28, title: "The graced one", author: "Delight Adisa", genre: "Stories", length: 5, type: "Stories", collection: "", content: theGracedOne, picture: "./assets/TheGracedOne.jpeg" },
-  { id: 29, title: "The Life Manifest - V", author: "Miss EJA", genre: "Stories", length: 20, type: "Stories", collection: "The Sealed Life Chronicles", content: theLifeManifest, picture: "./assets/TheLifeManifest.png" },
+  { id: 20, title: "Nothing Lacking", author: "Miss EJA", genre: "Short Stories", length: 6, type: "Short Stories", collection: "The Sealed Life Chronicles - I", content: nothingLacking, picture: "/assets/NothingLacking.jpeg" },
+  { id: 21, title: "Sight By Speaking", author: "Miss EJA", genre: "Short Stories", length: 5, type: "Short Stories", collection: "The Sealed Life Chronicles - II", content: sightBySpeaking , picture: "/assets/SightBySpeakingFinal;.jpeg" },
+  { id: 22, title: "The Summer Everything Changed", author: "Miss EJA", genre: "Short Stories", length: 4, type: "Short Stories", collection: "The Sealed Life Chronicles - III", content: theSummerEverythingChanged, picture: "/assets/TheSummerEverythingChanged.png" },
+  { id: 23, title: "The Golden Man's Trial", author: "Miss EJA", genre: "Short Stories", type: "Short Stories" , length: 7, collection: "The Sealed Life Chronicles - IV", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" },
+  { id: 25, title: "Taking Action", author: "Delight Adisa", genre: "Short Stories", length: 3, type: "Short Stories", collection: "", content: takingAction, picture: "./assets/TakingAction.png" }, 
+  { id: 26, title: "A Preacher's Kid Story", author: "Delight Adisa", genre: "Short Stories", length: 3, type: "Short Stories", collection: "", content: aPreacherKid, picture: "./assets/APreachersKidsStory.jpeg" },
+  { id: 27, title: "My Redemption", author: "Delight Adisa", genre: "Short Stories", length: 2, type: "Short Stories", collection: "", content: myRedemption, picture: "./assets/MyRedemption.jpeg" },
+  { id: 28, title: "The Graced One", author: "Delight Adisa", genre: "Short Stories", length: 5, type: "Short Stories", collection: "", content: theGracedOne, picture: "./assets/TheGracedOne.jpeg" },
+  { id: 29, title: "The Life Manifest", author: "Miss EJA", genre: "Short Stories", length: 6, type: "Short Stories", collection: "The Sealed Life Chronicles - V", content: theLifeManifest, picture: "./assets/TheLifeManifest.png" },
 
-  //PDF
-  { id: 24, title: "Fate and faith", author: "Delight Adisa", genre: "Novels", length: 131, type: "PDF", collection: "", content: "/assets/FateAndFaith.pdf", pdfUrl: "/assets/FateAndFaith.pdf", picture: "/assets/FateAndFaith.jpg"}
+  // PDF
+  { id: 24, title: "Fate And Faith", author: "Delight Adisa", genre: "Novels", length: 131, type: "PDF", collection: "", content: "/assets/FateAndFaith.pdf", pdfUrl: "/assets/FateAndFaith.pdf", picture: "/assets/FateAndFaith.jpg"}
 ];
 
 

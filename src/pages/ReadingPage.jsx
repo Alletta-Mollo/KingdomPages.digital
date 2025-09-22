@@ -79,7 +79,7 @@ const ReadingPage = () => {
 
    if (libraryItem.type !== 'PDF' && libraryItem.content) {
     const lines = libraryItem.content.split('\n'); 
-    const wordsPerSegment = 150; 
+    const wordsPerSegment = 450; 
     const segments = [];
 
     let temp = [];
@@ -242,54 +242,6 @@ const ReadingPage = () => {
 
       </Card>
       
-      <Card className="mt-8 shadow-xl glassmorphism relative z-10"> {/* Added relative z-10 */}
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 gradient-text"><MessageCircle/> Community Comments</CardTitle>
-          <CardDescription></CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4 max-h-96 overflow-y-auto pr-4">
-            {comments.length > 0 ? (
-              comments.map(comment => (
-                <motion.div 
-                  key={comment.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-start space-x-3 bg-card p-4 rounded-lg border"
-                >
-                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
-                    <User size={18} />
-                  </div>
-                  <div className="flex-grow">
-                    <p className="font-semibold text-foreground">{comment.name}</p>
-                    <p className="text-foreground/80">{comment.text}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{new Date(comment.timestamp).toLocaleString()}</p>
-                  </div>
-                </motion.div>
-              ))
-            ) : (
-              <p className="text-center text-muted-foreground py-4">Be the first to leave a comment!</p>
-            )}
-          </div>
-        </CardContent>
-        <CardFooter>
-          <form onSubmit={handleCommentSubmit} className="w-full space-y-4">
-            <div className="grid sm:grid-cols-3 gap-4">
-               <div className="sm:col-span-1">
-                 <Label htmlFor="commenterName">Your Name</Label>
-                 <Input id="commenterName" value={commenterName} onChange={e => setCommenterName(e.target.value)} placeholder="e.g., John D." className="bg-background/80" />
-               </div>
-               <div className="sm:col-span-2">
-                 <Label htmlFor="newComment">Your Comment</Label>
-                 <Textarea id="newComment" value={newComment} onChange={e => setNewComment(e.target.value)} placeholder="Share your thoughts..." className="bg-background/80" />
-               </div>
-            </div>
-            <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto bg-gradient-to-r from-primary to-secondary group">
-              {isSubmitting ? 'Posting...' : <>Post Comment <Send size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" /></>}
-            </Button>
-          </form>
-        </CardFooter>
-      </Card>
 
       <motion.div 
         initial={{ y: 20, opacity: 0 }} 

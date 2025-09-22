@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Feather, MessageSquare, Book, Sparkles } from 'lucide-react';
 import { libraryData } from '@/data/libraryData';
 import { WavySeparator } from '@/components/WavySeparator';
+import { PencilLine } from 'lucide-react';
+
 
 const AnimatedOrb = ({ className, initial, animate }) => (
   <motion.div
@@ -184,7 +186,7 @@ const HomePage = () => {
           </h1>
 
           <p className="max-w-xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
-            <em>Enjoy stories and poems of faith, hope and love. Expect to be transported into a realm of infinite possibilities, fill your thoughts with great expectations of brighter days ahead and warm your heart with the deepest of affections as you journey through each piece. </em>
+            <em>Enjoy stories and poems of faith, hope and love. Expect to be transported into a realm of infinite possibilities, fill your thoughts with great expectations of brighter days ahead and warm your heart with the deepest of affections as you journey through each piece </em>
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
@@ -215,16 +217,16 @@ const HomePage = () => {
          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
             <FeatureCard 
               icon={BookOpen}
-              title="Curated Library"
-              description="Explore literature and visual works crafted by Holy Spirit-led artists — each piece rooted in faith and purpose."
+              title="Start your journey of faith"
+              description="As you’ve been reading, you may have been inspired to begin a new chapter in your life, believe in Jesus Christ, find out what’s next."
               delay={0.2}
-              link="/library"
-              linkText="Start Reading"
+              link="/salvation"
+              linkText="Receive Salvation"
             />
             <FeatureCard x
               icon={Feather}
               title="Share Your Story"
-              description="Has our Spirit-led platform personally inspired you in a way that you would like to share with us?"
+              description="Has this platform personally inspired you in a way that you would like to share with us?"
               delay={0.4}
               link="/contact"
               linkText="Get in Touch"
@@ -234,31 +236,13 @@ const HomePage = () => {
               title="Join the Dialogue"
               description="Engage with a vibrant community. Share interpretations, explore inspired writings, and discuss the topics that matter most."
               delay={0.6}
-              link="/library"
+              link="/comment-page"
               linkText="Start Commenting"
             />
          </div>
       </section>
+ 
 
-      {/* <section className="container mx-auto text-center py-20 relative z-10">
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="glassmorphism p-10 md:p-16 rounded-2xl aurora-card"
-        >
-          <h2 className="text-4xl font-bold mb-4 gradient-text">Ready to Begin Your Next Chapter?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-muted-foreground">
-            A divine perspective awaits in every Spirit-inspired story — and it’s just a click away.
-          </p>
-          <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
-             <NavLink to= "/library">
-                Take Me to the Library <BookOpen className="ml-2 h-5 w-5 transition-transform group-hover:rotate-3"/>
-            </NavLink>
-          </Button>
-        </motion.div>
-      </section> */}
       </section>   
     </div>
   );

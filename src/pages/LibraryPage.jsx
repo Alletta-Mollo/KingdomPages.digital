@@ -8,6 +8,8 @@ import { Slider } from "@/components/ui/slider";
 import { Search, Filter, Clock, FileText, Book, Frown } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { libraryData } from '@/data/libraryData';
+import { PencilLine } from 'lucide-react';
+
 
 const genres = ["All", ...new Set(libraryData.map(item => item.genre))];
 const authors = ["All", ...new Set(libraryData.map(item => item.author))];
@@ -182,10 +184,10 @@ const LibraryPage = () => {
           </div>
 
           {/* Mobile arrows at the bottom */}
-          <div className="flex justify-between items-center md:hidden mt-2">
+          {/* <div className="flex justify-between items-center md:hidden mt-2">
             <Button onClick={() => scrollGenre(genre, 'left')} variant="ghost">←</Button>
             <Button onClick={() => scrollGenre(genre, 'right')} variant="ghost">→</Button>
-          </div>
+          </div> */}
         </div>
       ))}
 
@@ -201,6 +203,13 @@ const LibraryPage = () => {
           </p>
         </div>
       )}
+     <button
+       onClick={() => window.location.href = '/community'}
+       className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-secondary text-white p-4 rounded-full shadow-xl hover:scale-105 transition-all"
+       aria-label="Go to Community"
+      >
+      <PencilLine size={24} />
+      </button>
     </section>
   );
 };

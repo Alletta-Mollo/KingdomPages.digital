@@ -227,7 +227,9 @@
   border-radius: inherit;
   opacity: 0;
   transition: opacity 0.5s;
+  pointer-events: none; 
 }
+
 
 .aurora-card:hover::before {
   opacity: 1;

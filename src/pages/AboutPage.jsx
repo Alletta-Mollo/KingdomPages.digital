@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Target, BookHeart, Sparkles, Feather } from 'lucide-react';
 import { WavySeparator } from '@/components/WavySeparator';
+import { PencilLine } from 'lucide-react';
 
 const StatCard = ({ icon, value, label, color, delay }) => (
   <motion.div
@@ -47,10 +48,12 @@ const AboutPage = () => {
     <div className="space-y-16 relative">
        <div className="creative-blob w-96 h-96 bg-primary/10 top-1/4 -left-32 animate-pulse" />
        <div className="creative-blob w-72 h-72 bg-secondary/10 bottom-1/4 -right-32" />
-
-      <section id="about" className="text-center py-12 md:py-16 bg-gradient-to-bl from-purple-100/30 via-transparent to-blue-100/20 rounded-xl shadow-inner scroll-mt-20">
+<section
+  id="about"
+  className="overflow-visible text-center py-12 md:py-16 bg-gradient-to-bl from-purple-100/30 via-transparent to-blue-100/20 rounded-xl shadow-inner scroll-mt-20"
+>
         <motion.h1
-          className="text-5xl md:text-6xl font-extrabold mb-6 gradient-text"
+          className="pb-1 min-h-[80px] text-5xl md:text-6xl font-extrabold mb-4 gradient-text leading-tight"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -58,16 +61,20 @@ const AboutPage = () => {
         >
           About Kingdom Pages
         </motion.h1>
+
         <motion.p
-          className="py-12 text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto"
+          className="pt-4 text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
         >
-          Kingdom Pages is a faith-driven digital library that brings together Christian stories, poems, and books that inspire faith, edify believers, and draws people into a personal relationship with Jesus Christ. Our mission is to make the Christian life tangible and relatable through literature that transforms hearts, renews minds, and strengthens the Kingdom of God
+          Kingdom Pages is a product of the <strong>Loveworld Sons of Ministry. </strong>
+          The Loveworld Sons of Ministry (SOM) is a global network of pastors’ and ministers’ children committed to equipping the next generation for life and ministry. Kingdom Pages was birthed as a response to the need for more Kingdom inspired literature.
+          It is a faith-driven digital library that brings together Christian stories, poems, and books that inspire faith, edify believers, and draws people into a personal relationship with Jesus Christ. Our mission is to make the Christian life tangible and relatable through literature that transforms hearts, renews minds, and strengthens the Kingdom of God.
         </motion.p>
       </section>
+
 
       <section className="container mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Our Journey & Mission</h2>
@@ -151,11 +158,17 @@ const AboutPage = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Impact by Numbers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto px-4">
           <StatCard icon={BookHeart} value="29+" label="Digital Items" color="border-primary" delay={0.1} />
-          <StatCard icon={Users} value="+" label="Active Readers" color="border-secondary" delay={0.3} />
+          {/* <StatCard icon={Users} value="+" label="Active Readers" color="border-secondary" delay={0.3} /> */}
           <StatCard icon={Sparkles} value="3+" label="Contributing Authors" color="border-accent" delay={0.5} />
         </div>
       </section>
-    
+      <button
+           onClick={() => window.location.href = '/community'}
+           className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-secondary text-white p-4 rounded-full shadow-xl hover:scale-105 transition-all"
+           aria-label="Go to Community"
+          >
+          <PencilLine size={24} />
+          </button>
     </div>
   );
 };
