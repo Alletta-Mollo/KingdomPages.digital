@@ -97,7 +97,7 @@ const CommentPage = () => {
 
       {/* Comments Section */}
       <div className="max-w-4xl mx-auto space-y-8 relative z-10">
-        <h2 className="text-2xl font-bold mb-4">Recent Reflections</h2>
+        <h2 className="text-2xl font-bold mb-4">Share your thoughts here</h2>
         {comments.length === 0 ? (
           <p className="text-muted-foreground">No comments yet. Be the first to share!</p>
         ) : (
