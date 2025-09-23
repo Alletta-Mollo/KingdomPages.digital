@@ -12,7 +12,7 @@ const NarrationButton = ({ text }) => {
       const allVoices = speechSynthesis.getVoices();
       const filtered = allVoices.filter(v =>
         v.lang === 'en-GB' &&
-        (v.name === 'Google UK English Female' || v.name === 'Google UK English Male')
+        (v.name === 'Google UK English Female ' || v.name === 'Google UK English Male')
       );
       setVoices(filtered);
       setSelectedVoice(filtered[0]);
