@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const TermsOfServicePage = () => {
   return (
     <motion.div 
-      className="max-w-4xl mx-auto py-8"
+      className="max-w-4xl mx-auto py-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

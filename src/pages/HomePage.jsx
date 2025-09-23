@@ -191,7 +191,7 @@ const HomePage = () => {
           <div className="flex justify-center gap-4 flex-wrap">
             <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
               <NavLink to="/library">
-                Explore the Library
+                Explore The Library
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </NavLink>
             </Button>
@@ -211,7 +211,7 @@ const HomePage = () => {
         <WavySeparator direction="up" className="text-background" />
          <section id="features" className="container mx-auto px-4 relative z-10">
          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">A Canvas for Creativity</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">A Canvas For Creativity</h2>
             <p className="max-w-2xl mx-auto text-muted-foreground"> Everything you need to immerse yourself in the world of Holy Spirit inspired literary work.</p>
          </div>
          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
@@ -225,15 +225,15 @@ const HomePage = () => {
             />
             <FeatureCard x
               icon={Feather}
-              title="Share Your Story"
+              title="Share your story"
               description="Has this platform personally inspired you in a way that you would like to share with us?"
               delay={0.4}
               link="/contact"
-              linkText="Get in Touch"
+              linkText="Get In Touch"
             />
             <FeatureCard 
               icon={MessageSquare}
-              title="Join the Dialogue"
+              title="Join the dialogue"
               description="Engage with a vibrant community. Share interpretations, explore inspired writings, and discuss the topics that matter most."
               delay={0.6}
               link="/comment-page"

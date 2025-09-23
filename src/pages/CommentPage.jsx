@@ -96,88 +96,92 @@ const CommentPage = () => {
       </motion.div>
 
       {/* Comments Section */}
-      <div className="max-w-4xl mx-auto space-y-8 relative z-10">
-        <h2 className="text-2xl font-bold mb-4">Share your thoughts here</h2>
+      <div className="max-w-4xl mx-auto relative z-10">
+        {/* <h2 className="text-2xl font-bold mb-4">Share your thoughts here</h2> */}
         {comments.length === 0 ? (
           <p className="text-muted-foreground">No comments yet. Be the first to share!</p>
         ) : (
-          comments.map((c) => (
-            <motion.div
-              key={c.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="p-6 bg-muted/40 rounded-xl shadow-md glassmorphism flex flex-col gap-4"
-            >
-              <div className="flex items-center gap-2 text-primary font-semibold">
-                <MessageCircle size={18} />
-                {c.name}
-              </div>
-              <p className="text-foreground/90">{c.message}</p>
-              {c.image && (
-                <img
-                  src={c.image}
-                  alt="Uploaded"
-                  className="mt-2 rounded-lg w-40 h-40 object-cover border border-muted"
-                />
-              )}
-              <span className="text-xs text-muted-foreground">
-                {new Date(c.timestamp).toLocaleString()}
-              </span>
-
-              {/* Replies */}
-              {c.replies && (
-                <div className="mt-3 ml-3 space-y-3 border-l-2 border-muted pl-3">
-                  {Object.values(c.replies).map((r, index) => (
-                    <div
-                      key={index}
-                      className="p-2 bg-muted/30 rounded-md border border-muted/50"
-                    >
-                      <div className="flex items-center gap-2 text-xs font-semibold text-accent">
-                        <CornerDownRight size={14} />
-                        {r.name}
-                      </div>
-                      <p className="text-sm text-foreground/80 leading-snug">{r.message}</p>
-                      <span className="text-xs text-muted-foreground">
-                        {new Date(r.timestamp).toLocaleString()}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Reply Form */}
-              <form
-                onSubmit={(e) => handleReplySubmit(c.id, e)}
-                className="mt-4 space-y-2"
+          <div className="flex flex-col gap-2 divide-y divide-muted/40">
+            {comments.map((c) => (
+              <motion.div
+                key={c.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="pt-4"
               >
-                <input
-                  name="name"
-                  placeholder="Your name"
-                  value={replyForm[c.id]?.name || ''}
-                  onChange={(e) => handleReplyChange(c.id, e)}
-                  className="w-full p-2 rounded bg-background/70 border border-muted text-sm"
-                  required
-                />
-                <textarea
-                  name="message"
-                  placeholder="Your reply..."
-                  value={replyForm[c.id]?.message || ''}
-                  onChange={(e) => handleReplyChange(c.id, e)}
-                  rows={2}
-                  className="w-full p-2 rounded bg-background/70 border border-muted text-sm"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-primary text-white text-sm rounded hover:opacity-90"
-                >
-                  Reply
-                </button>
-              </form>
-            </motion.div>
-          ))
+                <div className="p-4 bg-muted/30 rounded-lg border border-muted">
+                  <div className="flex items-center gap-2 text-primary font-semibold">
+                    <MessageCircle size={18} />
+                    {c.name}
+                  </div>
+                  <p className="text-foreground/90">{c.message}</p>
+                  {c.image && (
+                    <img
+                      src={c.image}
+                      alt="Uploaded"
+                      className="mt-2 rounded-lg w-40 h-40 object-cover border border-muted"
+                    />
+                  )}
+                  <span className="text-xs text-muted-foreground">
+                    {new Date(c.timestamp).toLocaleString()}
+                  </span>
+
+                  {/* Replies */}
+                  {c.replies && (
+                    <div className="mt-3 ml-3 space-y-3 border-l-2 border-muted pl-3">
+                      {Object.values(c.replies).map((r, index) => (
+                        <div
+                          key={index}
+                          className="p-2 bg-muted/30 rounded-md border border-muted/50"
+                        >
+                          <div className="flex items-center gap-2 text-xs font-semibold text-accent">
+                            <CornerDownRight size={14} />
+                            {r.name}
+                          </div>
+                          <p className="text-sm text-foreground/80 leading-snug">{r.message}</p>
+                          <span className="text-xs text-muted-foreground">
+                            {new Date(r.timestamp).toLocaleString()}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Reply Form */}
+                  <form
+                    onSubmit={(e) => handleReplySubmit(c.id, e)}
+                    className="mt-4 space-y-2"
+                  >
+                    <input
+                      name="name"
+                      placeholder="Your name"
+                      value={replyForm[c.id]?.name || ''}
+                      onChange={(e) => handleReplyChange(c.id, e)}
+                      className="w-full p-2 rounded bg-background/70 border border-muted text-sm"
+                      required
+                    />
+                    <textarea
+                      name="message"
+                      placeholder="Your reply..."
+                      value={replyForm[c.id]?.message || ''}
+                      onChange={(e) => handleReplyChange(c.id, e)}
+                      rows={2}
+                      className="w-full p-2 rounded bg-background/70 border border-muted text-sm"
+                      required
+                    />
+                    <button
+                      type="submit"
+                      className="px-4 py-2 bg-primary text-white text-sm rounded hover:opacity-90"
+                    >
+                      Reply
+                    </button>
+                  </form>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         )}
       </div>
 
@@ -186,7 +190,7 @@ const CommentPage = () => {
         onClick={() => setShowForm(true)}
         className="fixed bottom-6 right-6 z-50 bg-primary text-white px-4 py-2 rounded-full shadow-lg hover:opacity-90"
       >
-        + Add Comment
+        + Add a Comment
       </button>
 
       {/* Pop-Up Comment Form */}
@@ -210,7 +214,7 @@ const CommentPage = () => {
               required
               className="w-full p-2 rounded bg-background/70 border border-muted"
             />
-                    <textarea
+                     <textarea
               name="message"
               placeholder="Your message..."
               value={formData.message}

@@ -83,7 +83,7 @@ export const libraryData = [
   { id: 29, title: "The Life Manifest", author: "Miss EJA", genre: "Short Stories", length: 6, type: "Short Stories", collection: "The Sealed Life Chronicles - V", content: theLifeManifest, picture: "./assets/TheLifeManifest.png" },
 
   // PDF
-  { id: 24, title: "Fate And Faith", author: "Delight Adisa", genre: "Novels", length: 131, type: "PDF", collection: "", content: "/assets/FateAndFaith.pdf", pdfUrl: "/assets/FateAndFaith.pdf", picture: "/assets/FateAndFaith.jpg"}
+  { id: 24, title: "Fate And Faith", author: "Delight Adisa", genre: "Novels", length: 131, type: "PDF", collection: "", content: "/assets/FateAndFaith.pdf", pdfUrl: "/assets/FateAndFaithFinal.pdf", picture: "/assets/FateAndFaith.jpg"}
 ];
 
 
