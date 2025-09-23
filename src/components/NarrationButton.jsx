@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, Pause, Play, Square } from 'lucide-react';
+import { Volume2, Pause, Play, Square, User, UserRound } from 'lucide-react';
 
 const NarrationButton = ({ text }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -10,43 +10,30 @@ const NarrationButton = ({ text }) => {
   useEffect(() => {
     const loadVoices = () => {
       const allVoices = speechSynthesis.getVoices();
-      if (!allVoices.length) return;
-
-      const femaleVoice = allVoices.find(
-        v => v.lang.startsWith('en') && v.name.toLowerCase().includes('female')
+      const filtered = allVoices.filter(v =>
+        v.lang === 'en-GB' &&
+        (v.name === 'Google UK English Female' || v.name === 'Google UK English Male')
       );
-
-      const maleVoice = allVoices.find(
-        v => v.lang.startsWith('en') && !v.name.toLowerCase().includes('female')
-      );
-
-      const filtered = [femaleVoice, maleVoice].filter(Boolean);
-
       setVoices(filtered);
-      setSelectedVoice(filtered[0] || null);
+      setSelectedVoice(filtered[0]);
     };
 
-    loadVoices();
-    if (typeof speechSynthesis !== 'undefined') {
+    if (speechSynthesis.onvoiceschanged !== undefined) {
       speechSynthesis.onvoiceschanged = loadVoices;
-      setTimeout(loadVoices, 250);
     }
+    loadVoices();
   }, []);
 
   const handleSpeak = () => {
-    if (!text) return;
     speechSynthesis.cancel();
-
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = selectedVoice;
-    utterance.rate = 0.9;
-    utterance.pitch = 1.05;
-
+    utterance.rate = 0.85;
+    utterance.pitch = 1.1;
     utterance.onend = () => {
       setIsSpeaking(false);
       setIsPaused(false);
     };
-
     speechSynthesis.speak(utterance);
     setIsSpeaking(true);
     setIsPaused(false);
@@ -81,7 +68,11 @@ const NarrationButton = ({ text }) => {
             }`}
             title={voice.name}
           >
-            {voice.name.toLowerCase().includes('female') ? '👩' : '👨'}
+            {voice.name.includes('Female') ? (
+              <User size={12} className="text-pink-500" />
+            ) : (
+              <UserRound size={12} className="text-blue-500" />
+            )}
           </button>
         ))}
       </div>
