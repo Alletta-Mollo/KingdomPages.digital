@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, Pause, Play, Square, User, UserRound } from 'lucide-react';
+import { Volume2, Pause, Play, Square } from 'lucide-react';
 
 const NarrationButton = ({ text }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -28,8 +28,8 @@ const NarrationButton = ({ text }) => {
     speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = selectedVoice;
-    utterance.rate = 0.85;
-    utterance.pitch = 1.1;
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
     utterance.onend = () => {
       setIsSpeaking(false);
       setIsPaused(false);
@@ -68,11 +68,7 @@ const NarrationButton = ({ text }) => {
             }`}
             title={voice.name}
           >
-            {voice.name.includes('Female') ? (
-              <User size={12} className="text-pink-500" />
-            ) : (
-              <UserRound size={12} className="text-blue-500" />
-            )}
+            {voice.name.includes('Female') ? '👩' : '👨'}
           </button>
         ))}
       </div>
