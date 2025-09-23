@@ -12,30 +12,23 @@ const NarrationButton = ({ text }) => {
       const allVoices = speechSynthesis.getVoices();
       if (!allVoices.length) return;
 
-      // 1. Prefer female English voices (UK/US/AU etc.)
-      let filtered = allVoices.filter(
+      const femaleVoice = allVoices.find(
         v => v.lang.startsWith('en') && v.name.toLowerCase().includes('female')
       );
 
-      // 2. Otherwise, any English voice
-      if (filtered.length === 0) {
-        filtered = allVoices.filter(v => v.lang.startsWith('en'));
-      }
+      const maleVoice = allVoices.find(
+        v => v.lang.startsWith('en') && !v.name.toLowerCase().includes('female')
+      );
 
-      // 3. Otherwise, fallback to all voices
-      if (filtered.length === 0) {
-        filtered = allVoices;
-      }
+      const filtered = [femaleVoice, maleVoice].filter(Boolean);
 
       setVoices(filtered);
       setSelectedVoice(filtered[0] || null);
     };
 
     loadVoices();
-    // Re-run when voices list is loaded (especially Safari)
     if (typeof speechSynthesis !== 'undefined') {
       speechSynthesis.onvoiceschanged = loadVoices;
-      // Safari sometimes needs a retry
       setTimeout(loadVoices, 250);
     }
   }, []);
