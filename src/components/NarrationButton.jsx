@@ -10,30 +10,50 @@ const NarrationButton = ({ text }) => {
   useEffect(() => {
     const loadVoices = () => {
       const allVoices = speechSynthesis.getVoices();
-      const filtered = allVoices.filter(v =>
-        v.lang === 'en-GB' &&
-        (v.name === 'Google UK English Female ' || v.name === 'Google UK English Male')
+      if (!allVoices.length) return;
+
+      // 1. Prefer female English voices (UK/US/AU etc.)
+      let filtered = allVoices.filter(
+        v => v.lang.startsWith('en') && v.name.toLowerCase().includes('female')
       );
+
+      // 2. Otherwise, any English voice
+      if (filtered.length === 0) {
+        filtered = allVoices.filter(v => v.lang.startsWith('en'));
+      }
+
+      // 3. Otherwise, fallback to all voices
+      if (filtered.length === 0) {
+        filtered = allVoices;
+      }
+
       setVoices(filtered);
-      setSelectedVoice(filtered[0]);
+      setSelectedVoice(filtered[0] || null);
     };
 
-    if (speechSynthesis.onvoiceschanged !== undefined) {
-      speechSynthesis.onvoiceschanged = loadVoices;
-    }
     loadVoices();
+    // Re-run when voices list is loaded (especially Safari)
+    if (typeof speechSynthesis !== 'undefined') {
+      speechSynthesis.onvoiceschanged = loadVoices;
+      // Safari sometimes needs a retry
+      setTimeout(loadVoices, 250);
+    }
   }, []);
 
   const handleSpeak = () => {
+    if (!text) return;
     speechSynthesis.cancel();
+
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = selectedVoice;
-    utterance.rate = 0.85;
-    utterance.pitch = 1.1;
+    utterance.rate = 0.9;
+    utterance.pitch = 1.05;
+
     utterance.onend = () => {
       setIsSpeaking(false);
       setIsPaused(false);
     };
+
     speechSynthesis.speak(utterance);
     setIsSpeaking(true);
     setIsPaused(false);
@@ -68,7 +88,7 @@ const NarrationButton = ({ text }) => {
             }`}
             title={voice.name}
           >
-            {voice.name.includes('Female') ? '👩' : '👨'}
+            {voice.name.toLowerCase().includes('female') ? '👩' : '👨'}
           </button>
         ))}
       </div>
