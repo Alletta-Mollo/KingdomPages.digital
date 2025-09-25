@@ -175,8 +175,8 @@ const HomePage = () => {
             transition={{ delay: 0.5, type: 'spring', stiffness: 200, damping: 20 }}
             className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-6 transform -rotate-3"
           >
-            <Sparkles className="w-4 h-4"/>
-            Welcome Home, Kingdom Pager
+            
+            Welcome, Kingdom Pager
           </motion.div>
           <h1 className="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter">
             <span className="block">READ. CONNECT.</span>

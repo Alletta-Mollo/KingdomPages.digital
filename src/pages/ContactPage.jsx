@@ -109,7 +109,7 @@ const ContactPage = () => {
           >
             <h2 className="text-3xl font-bold mb-6 gradient-text">Contact Information</h2>
             <ContactInfoCard icon={Mail} title="Email Us" content="admin@kingdompages.digital" href="mailto:admin@kingdompages.digital" delay={0.1} />
-            <ContactInfoCard icon={Phone} title="Call Us" content={<span>on Kingschat <em>- @Kingdompages</em></span>} href="" delay={0.2} />
+            <ContactInfoCard icon={Phone} title="Message Us" content={<span>on Kingschat <em>- @Kingdompages</em></span>} href="" delay={0.2} />
             <ContactInfoCard icon={Globe} title="Other Sites" content= {<a href="https://loveworldsonsofministry.org" target="_blank" rel="noopener noreferrer">Loveworld Sons Of Ministry</a>}
            delay={0.3} />
           </motion.div>
