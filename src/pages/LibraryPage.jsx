@@ -5,11 +5,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Slider } from "@/components/ui/slider";
-import { Search, Filter, Clock, FileText, Book, Frown } from 'lucide-react';
+import { Search, Clock, FileText, Book, Frown } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { libraryData } from '@/data/libraryData';
 import { PencilLine } from 'lucide-react';
-
 
 const genres = ["All", ...new Set(libraryData.map(item => item.genre))];
 const authors = ["All", ...new Set(libraryData.map(item => item.author))];
@@ -22,30 +21,42 @@ const LibraryPage = () => {
   const [sortBy, setSortBy] = useState('title_asc');
   const scrollRefs = useRef({});
 
-  const filteredAndSortedData = useMemo(() => {
-    let items = libraryData;
+    const filteredAndSortedData = useMemo(() => {
+      let items = libraryData;
 
-    if (searchTerm) {
-      items = items.filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
-    }
-    if (selectedGenre !== 'All') {
-      items = items.filter(item => item.genre === selectedGenre);
-    }
-    if (selectedAuthor !== 'All') {
-      items = items.filter(item => item.author === selectedAuthor);
-    }
-    items = items.filter(item => item.length >= lengthRange[0] && item.length <= lengthRange[1]);
+      if (searchTerm) {
+        const lowerSearch = searchTerm.toLowerCase();
+        items = items.filter(
+          item =>
+            item.title.toLowerCase().includes(lowerSearch) ||
+            item.author.toLowerCase().includes(lowerSearch) ||
+            item.collection.toLowerCase().includes(lowerSearch)
+        );
+      }
 
-    items.sort((a, b) => {
-      if (sortBy === 'title_asc') return a.title.localeCompare(b.title);
-      if (sortBy === 'title_desc') return b.title.localeCompare(a.title);
-      if (sortBy === 'author_asc') return a.author.localeCompare(b.author);
-      if (sortBy === 'author_desc') return b.author.localeCompare(a.author);
-      return 0;
-    });
+      if (selectedGenre !== 'All') {
+        items = items.filter(item => item.genre === selectedGenre);
+      }
 
-    return items;
-  }, [searchTerm, selectedGenre, selectedAuthor, lengthRange, sortBy]);
+      if (selectedAuthor !== 'All') {
+        items = items.filter(item => item.author === selectedAuthor);
+      }
+
+      items = items.filter(
+        item => item.length >= lengthRange[0] && item.length <= lengthRange[1]
+      );
+
+      items.sort((a, b) => {
+        if (sortBy === 'title_asc') return a.title.localeCompare(b.title);
+        if (sortBy === 'title_desc') return b.title.localeCompare(a.title);
+        if (sortBy === 'author_asc') return a.author.localeCompare(b.author);
+        if (sortBy === 'author_desc') return b.author.localeCompare(a.author);
+        return 0;
+      });
+
+      return items;
+    }, [searchTerm, selectedGenre, selectedAuthor, lengthRange, sortBy]);
+
 
   const groupedByGenre = useMemo(() => {
     const groups = {};
@@ -67,18 +78,17 @@ const LibraryPage = () => {
 
   return (
     <section id="library" className="space-y-8 scroll-mt-20 pt-16 px-4">
+
+      {/* Library Header + Search */}
       <div className="p-6 md:p-8 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-xl shadow-lg glassmorphism">
         <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
           <h1 className="text-4xl font-bold gradient-text">Our Digital Library</h1>
-          <Button variant="outline" className="md:hidden flex items-center gap-2">
-            <Filter size={18} /> Filters
-          </Button>
         </div>
 
         <div className="relative mb-6">
           <Input
             type="text"
-            placeholder="Search by title..."
+            placeholder="Search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10 text-lg h-12 bg-background/80 focus:ring-primary"
@@ -86,7 +96,8 @@ const LibraryPage = () => {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        {/* Filters only visible on md+ screens */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <div>
             <Label htmlFor="genre-select" className="text-sm font-medium text-foreground/80">Genre</Label>
             <Select value={selectedGenre} onValueChange={setSelectedGenre}>
@@ -147,6 +158,7 @@ const LibraryPage = () => {
         </div>
       </div>
 
+      {/* Library Content */}
       {Object.entries(groupedByGenre).map(([genre, items]) => (
         <div key={genre} className="space-y-4">
           <h2 className="text-2xl font-semibold gradient-text">{genre}</h2>
@@ -156,38 +168,48 @@ const LibraryPage = () => {
             className="flex space-x-4 overflow-x-auto pb-2 scroll-smooth"
           >
             {items.map(item => (
-              <Card key={item.id} className="min-w-[250px] max-w-[300px] flex-shrink-0">
-                <CardHeader className="p-0">
+            <Card 
+                key={item.id} 
+                className="min-w-[250px] max-w-[300px] flex-shrink-0 rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105 bg-background/80"
+              >
+                <CardHeader className="p-0 rounded-t-2xl overflow-hidden">
                   <NavLink to={`/read/${item.id}`} className="block">
-                    <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
-                      <img src={item.picture} alt={item.title} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="w-full h-48 flex items-center justify-center overflow-hidden rounded-t-2xl">
+                      <img 
+                        src={item.picture} 
+                        alt={item.title} 
+                        className="object-cover h-full w-full opacity-80 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" 
+                      />
                     </div>
                   </NavLink>
                 </CardHeader>
-                <CardContent className="p-4 flex-grow">
-                  <CardTitle className="text-xl mb-1 gradient-text">{item.title}</CardTitle>
-                  <CardDescription className="text-sm text-muted-foreground mb-2">By {item.author}</CardDescription>
+
+                <CardContent className="p-6 flex-grow">
+                  <CardTitle className="text-xl mb-2 gradient-text">{item.title}</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground mb-3">By {item.author}</CardDescription>
                   <div className="flex items-center space-x-4 text-xs text-foreground/70">
                     {item.type === 'PDF' ? (
-                      <span className="flex items-center"><FileText size={14} className="mr-1 text-red-500" /> {item.type}</span>
+                      <span className="flex items-center">
+                        <FileText size={14} className="mr-1 text-red-500" /> {item.type}
+                      </span>
                     ) : (
-                      <span className="flex items-center"><Book size={14} className="mr-1 text-primary" /> {item.type}</span>
+                      <span className="flex items-center">
+                        <Book size={14} className="mr-1 text-primary" /> {item.type}
+                      </span>
                     )}
-                                 <span className="flex items-center"><Clock size={14} className="mr-1 text-secondary" /> {item.length} pages</span>
+                    <span className="flex items-center">
+                      <Clock size={14} className="mr-1 text-secondary" /> {item.length} pages
+                    </span>
                   </div>
                 </CardContent>
+
                 <CardFooter className="p-4 border-t border-border/50">
                   <CardDescription className="text-xs mb-1 gradient-text">{item.collection}</CardDescription>
                 </CardFooter>
               </Card>
+
             ))}
           </div>
-
-          {/* Mobile arrows at the bottom */}
-          {/* <div className="flex justify-between items-center md:hidden mt-2">
-            <Button onClick={() => scrollGenre(genre, 'left')} variant="ghost">←</Button>
-            <Button onClick={() => scrollGenre(genre, 'right')} variant="ghost">→</Button>
-          </div> */}
         </div>
       ))}
 
@@ -203,12 +225,14 @@ const LibraryPage = () => {
           </p>
         </div>
       )}
-     <button
-       onClick={() => window.location.href = '/comment-page'}
-       className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-secondary text-white p-4 rounded-full shadow-xl hover:scale-105 transition-all"
-       aria-label="Go to Community"
+
+      {/* Community Button */}
+      <button
+        onClick={() => window.location.href = '/comment-page'}
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-secondary text-white p-4 rounded-full shadow-xl hover:scale-105 transition-all"
+        aria-label="Go to Community"
       >
-      <PencilLine size={24} />
+        <PencilLine size={24} />
       </button>
     </section>
   );

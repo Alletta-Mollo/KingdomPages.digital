@@ -6,6 +6,8 @@ import { ArrowRight, BookOpen, Feather, MessageSquare, Book, Sparkles } from 'lu
 import { libraryData } from '@/data/libraryData';
 import { WavySeparator } from '@/components/WavySeparator';
 import { PencilLine } from 'lucide-react';
+import BookCarousel from "@/components/BookCarousel";
+
 
 
 const AnimatedOrb = ({ className, initial, animate }) => (
@@ -86,44 +88,47 @@ const FeatureCard = ({ icon: Icon, title, description, link, linkText, delay }) 
   );
 };
 
-const Marquee = () => {
-  const titles = libraryData.slice(0, 10); // Adjust as needed
+// const Marquee = () => {
+//   const titles = libraryData.slice(0, 10); // Adjust as needed
 
-  return (
-    <div className="relative flex w-full overflow-x-hidden">
-      <div className="marquee">
-        <div className="marquee__content">
-          {titles.map(item => (
-            <div key={`${item.id}-1`} className="flex flex-col items-center mx-6 space-y-2">
-              <img
-                src={item.picture}
-                alt={item.title}
-                className="w-36 h-32 object-cover rounded-xl shadow-lg"
-              />
-              <span className="text-base font-medium text-foreground text-center whitespace-nowrap">
-                {item.title}
-              </span>
-            </div>
-          ))}
-        </div>
-        <div aria-hidden="true" className="marquee__content">
-          {titles.map(item => (
-            <div key={`${item.id}-2`} className="flex flex-col items-center mx-6 space-y-2">
-              <img
-                src={item.picture}
-                alt={item.title}
-                className="w-36 h-32 object-cover rounded-xl shadow-lg"
-              />
-              <span className="text-base font-medium text-foreground text-center whitespace-nowrap">
-                {item.title}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className="relative flex w-full overflow-x-hidden">
+//       <div className="marquee">
+//         <div className="marquee__content">
+//           {titles.map(item => (
+//             <div key={`${item.id}-1`} className="flex flex-col items-center mx-6 space-y-2">
+//               <img
+//                 src={item.picture}
+//                 alt={item.title}
+//                 className="w-36 h-32 object-cover rounded-xl shadow-lg"
+//               />
+//               <span className="text-base font-medium text-foreground text-center whitespace-nowrap">
+//                 {item.title}
+//               </span>
+//             </div>
+//           ))}
+//         </div>
+//         <div aria-hidden="true" className="marquee__content">
+//           {titles.map(item => (
+//             <div key={`${item.id}-2`} className="flex flex-col items-center mx-6 space-y-2">
+//               <img
+//                 src={item.picture}
+//                 alt={item.title}
+//                 className="w-36 h-32 object-cover rounded-xl shadow-lg"
+//               />
+//               <span className="text-base font-medium text-foreground text-center whitespace-nowrap">
+//                 {item.title}
+//               </span>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+<BookCarousel />
+
 
 
 
@@ -131,7 +136,7 @@ const Marquee = () => {
 
 const HomePage = () => {
   return (
-    <div className="space-y-24 md:space-y-32 overflow-hidden">
+    <div className="space-y-24 md:space-y-24 overflow-hidden">
       <div className="creative-bg">
         <AnimatedOrb
           className="orb-1"
@@ -162,7 +167,7 @@ const HomePage = () => {
         />
       </div>
 
-      <section id="home" className="text-center py-8 md:py-2 relative">
+      <section id="home" className="text-center py-6 md:py-1 relative">
         <motion.div
           initial={{ opacity: 0, y: -30, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -173,7 +178,7 @@ const HomePage = () => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.5, type: 'spring', stiffness: 200, damping: 20 }}
-            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-6 transform -rotate-3"
+            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 rounded-full text-sm font-semibold mb-6 transform -rotate-3"
           >
             
             Welcome, Kingdom Pager
@@ -206,7 +211,9 @@ const HomePage = () => {
         <WavySeparator direction="down" className="text-background" />
         <div className="py-10 bg-background relative z-10">
           <h3 className="text-center text-xl font-semibold mb-8 text-muted-foreground">Discover Our Collection</h3>
-          <Marquee />
+
+        <BookCarousel />
+
         </div>
         <WavySeparator direction="up" className="text-background" />
          <section id="features" className="container mx-auto px-4 relative z-10">
@@ -214,35 +221,34 @@ const HomePage = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">A Canvas For Creativity</h2>
             <p className="max-w-2xl mx-auto text-muted-foreground"> Everything you need to immerse yourself in the world of Holy Spirit inspired literary work.</p>
          </div>
-         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
-            <FeatureCard 
-              icon={BookOpen}
-              title="Start your journey of faith"
-              description="As you’ve been reading, you may have been inspired to begin a new chapter in your life, believe in Jesus Christ, find out what’s next."
-              delay={0.2}
-              link="/salvation"
-              linkText="Receive Salvation"
-            />
-            <FeatureCard x
-              icon={Feather}
-              title="Share your story"
-              description="Has this platform personally inspired you in a way that you would like to share with us?"
-              delay={0.4}
-              link="/contact"
-              linkText="Get In Touch"
-            />
-            <FeatureCard 
-              icon={MessageSquare}
-              title="Join the dialogue"
-              description="Engage with a vibrant community. Share interpretations, explore inspired writings, and discuss the topics that matter most."
-              delay={0.6}
-              link="/comment-page"
-              linkText="Start Commenting"
-            />
-         </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white"
+          style={{ perspective: '1000px' }} >
+          <FeatureCard 
+            icon={BookOpen}
+            title="Start your journey of faith"
+            description="As you’ve been reading, you may have been inspired to begin a new chapter in your life, believe in Jesus Christ, find out what’s next."
+            delay={0.2}
+            link="/salvation"
+            linkText="Receive Salvation"
+          />
+          <FeatureCard 
+            icon={Feather}
+            title="Share your story"
+            description="Has this platform personally inspired you in a way that you would like to share with us?"
+            delay={0.4}
+            link="/contact"
+            linkText="Get In Touch"
+          />
+          <FeatureCard 
+            icon={MessageSquare}
+            title="Join the dialogue"
+            description="Engage with a vibrant community. Share interpretations, explore inspired writings, and discuss the topics that matter most."
+            delay={0.6}
+            link="/comment-page"
+            linkText="Start Commenting"
+          />
+        </div>
       </section>
- 
-
       </section>   
     </div>
   );
