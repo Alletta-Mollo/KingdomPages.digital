@@ -130,10 +130,6 @@ const FeatureCard = ({ icon: Icon, title, description, link, linkText, delay }) 
 <BookCarousel />
 
 
-
-
-
-
 const HomePage = () => {
   return (
     <div className="space-y-24 md:space-y-24 overflow-hidden">
@@ -221,33 +217,36 @@ const HomePage = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">A Canvas For Creativity</h2>
             <p className="max-w-2xl mx-auto text-muted-foreground"> Everything you need to immerse yourself in the world of Holy Spirit inspired literary work.</p>
          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white"
-          style={{ perspective: '1000px' }} >
-          <FeatureCard 
-            icon={BookOpen}
-            title="Start your journey of faith"
-            description="As you’ve been reading, you may have been inspired to begin a new chapter in your life, believe in Jesus Christ, find out what’s next."
-            delay={0.2}
-            link="/salvation"
-            linkText="Receive Salvation"
-          />
-          <FeatureCard 
-            icon={Feather}
-            title="Share your story"
-            description="Has this platform personally inspired you in a way that you would like to share with us?"
-            delay={0.4}
-            link="/contact"
-            linkText="Get In Touch"
-          />
-          <FeatureCard 
-            icon={MessageSquare}
-            title="Join the dialogue"
-            description="Engage with a vibrant community. Share interpretations, explore inspired writings, and discuss the topics that matter most."
-            delay={0.6}
-            link="/comment-page"
-            linkText="Start Commenting"
-          />
-        </div>
+       <div
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 bg-transparent"
+        style={{ perspective: '1000px' }}
+      >
+        <FeatureCard 
+          icon={BookOpen}
+          title="Start your journey of faith"
+          description="As you’ve been reading, you may have been inspired to begin a new chapter in your life, believe in Jesus Christ, find out what’s next."
+          delay={0.2}
+          link="/salvation"
+          linkText="Receive Salvation"
+        />
+        <FeatureCard 
+          icon={Feather}
+          title="Share your story"
+          description="Has this platform personally inspired you in a way that you would like to share with us?"
+          delay={0.4}
+          link="/contact"
+          linkText="Get In Touch"
+        />
+        <FeatureCard 
+          icon={MessageSquare}
+          title="Join the dialogue"
+          description="Engage with a vibrant community. Share interpretations, explore inspired writings, and discuss the topics that matter most."
+          delay={0.6}
+          link="/comment-page"
+          linkText="Start Commenting"
+        />
+      </div>
+
       </section>
       </section>   
     </div>

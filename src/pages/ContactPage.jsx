@@ -5,7 +5,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { Mail, Phone, MapPin, Send, Info, Globe } from 'lucide-react';
+import { Mail, Phone, Globe, Send } from 'lucide-react';
+import { db } from '@/firebaseConfig.js';
+import { ref as dbRef, push } from 'firebase/database';
 
 const ContactInfoCard = ({ icon, title, content, href, delay }) => (
   <motion.div
@@ -39,43 +41,42 @@ const ContactPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const { name, email, subject, message } = formData;
-    const recipientEmail = "admin@kingdompages.digital";
+    try {
+      const submissionsRef = dbRef(db, 'contactSubmissions');
+      await push(submissionsRef, {
+        ...formData,
+        timestamp: new Date().toISOString(),
+      });
 
-    const mailtoSubject = encodeURIComponent(`[From ${name}] ${subject}`);
-    const mailtoBody = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
+      toast({
+        title: "Message Sent",
+        description: "Your message was successfully submitted! 🎉",
+        variant: "default",
+      });
 
-    const mailtoLink = `mailto:${recipientEmail}?subject=${mailtoSubject}&body=${mailtoBody}`;
-    window.location.href = mailtoLink;
-
-    toast({
-      title: "Email Client Opened",
-      description: "Please complete sending the message in your email application.",
-      variant: "default",
-    });
-
-    setTimeout(() => {
       setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error("Error saving message:", error);
+      toast({
+        title: "Submission Failed",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
     <div className="space-y-16 relative overflow-hidden">
-      {/* Purple paint splashes */}
+      {/* Background accents */}
       <div className="absolute w-32 h-32 bg-purple-300/30 rounded-full blur-2xl top-10 left-10 rotate-12 z-0" />
       <div className="absolute w-24 h-24 bg-purple-400/20 rounded-full blur-xl bottom-20 right-16 rotate-45 z-0" />
       <div className="absolute w-16 h-16 bg-purple-500/25 rounded-full blur-md top-1/2 left-1/3 rotate-[-30deg] z-0" />
-
-      {/* Decorative blobs */}
-      <div className="creative-blob w-80 h-80 bg-accent/10 top-1/2 -right-40" />
-      <div className="creative-blob w-80 h-80 bg-secondary/10 top-0 -left-40 animate-pulse" />
 
       <section id="contact" className="text-center py-12 md:py-16 bg-gradient-to-br from-purple-100/30 via-blue-100/20 to-transparent rounded-xl shadow-inner scroll-mt-20 relative z-10">
         <motion.h1
@@ -109,9 +110,8 @@ const ContactPage = () => {
           >
             <h2 className="text-3xl font-bold mb-6 gradient-text">Contact Information</h2>
             <ContactInfoCard icon={Mail} title="Email Us" content="admin@kingdompages.digital" href="mailto:admin@kingdompages.digital" delay={0.1} />
-            <ContactInfoCard icon={Phone} title="Message Us" content={<span>on Kingschat <em>- @Kingdompages</em></span>} href="" delay={0.2} />
-            <ContactInfoCard icon={Globe} title="Other Sites" content= {<a href="https://loveworldsonsofministry.org" target="_blank" rel="noopener noreferrer">Loveworld Sons Of Ministry</a>}
-           delay={0.3} />
+            <ContactInfoCard icon={Phone} title="Message Us" content={<span>on Kingschat <em>- @Kingdompages</em></span>} delay={0.2} />
+            <ContactInfoCard icon={Globe} title="Other Sites" content={<a href="https://loveworldsonsofministry.org" target="_blank" rel="noopener noreferrer">Loveworld Sons Of Ministry</a>} delay={0.3} />
           </motion.div>
 
           <motion.div
@@ -181,9 +181,9 @@ const ContactPage = () => {
                 className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground shadow-lg group"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Opening Email...' : (
+                {isSubmitting ? 'Submitting...' : (
                   <>
-                    Send Message via Email <Send size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                    Submit Message <Send size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                   </>
                 )}
               </Button>
