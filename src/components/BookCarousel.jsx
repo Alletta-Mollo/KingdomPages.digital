@@ -49,7 +49,7 @@ const BookCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextBook();
-    }, 4000);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
