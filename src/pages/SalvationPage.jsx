@@ -13,16 +13,13 @@ const SalvationPage = () => {
 
   return (
     <div className="space-y-16 relative overflow-hidden">
-  
-
       {/* Hero Section */}
-      <section className="text-center py-16 md:py-24 relative z-10">
-        <div className=""></div>
+      <section className="py-16 md:py-24 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="container mx-auto px-4"
+          className="container mx-auto px-4 text-center"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -32,10 +29,10 @@ const SalvationPage = () => {
           >
             <Heart size={48} strokeWidth={1.5} />
           </motion.div>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl mb-6 leading-tight">
             <span className="gradient-text">A Step Of Faith</span>
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-10">
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-10 text-left">
             <em>I am ready to receive Jesus Christ as my Lord and Saviour, and start my walk of faith with Him.</em>
           </p>
         </motion.div>
@@ -48,8 +45,8 @@ const SalvationPage = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="max-w-4xl mx-auto glassmorphism p-8 md:p-12 rounded-2xl shadow-xl aurora-card"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">The Steps Of Salvation</h2>
-          <div className="space-y-6 text-lg text-foreground/90 leading-relaxed">
+          <h2 className="text-3xl md:text-4xl text-center mb-8">The Steps Of Salvation</h2>
+          <div className="space-y-6 text-lg text-foreground/90 leading-relaxed text-left">
             <p>
               The Bible teaches that salvation is a gift from God, offered freely to all who believe in His Son, Jesus Christ. It's not something we can earn through good works, but something we receive through faith shown in our confession.
             </p>
@@ -60,31 +57,33 @@ const SalvationPage = () => {
               If you feel a stirring in your heart and wish to accept this precious gift, you can express your faith through saying the following Prayer. Prayer is a means of communicating to God. He knows your heart, and it's the attitude of your heart that He cares about.
             </p>
             <div className="p-6 bg-muted/50 rounded-lg">
-              <h3 className="font-semibold text-xl mb-2 text-primary">Prayer of Salvation</h3>
-              <p className="italic">
+              <h3 className="text-xl mb-2 text-primary text-center">Prayer of Salvation</h3>
+              <p className="italic text-left">
                 "O Lord God, I believe with all my heart in Jesus Christ, Son of the living God. I believe He died for me and God raised Him from the dead. I believe He’s alive today. I confess with my mouth that Jesus Christ is the Lord of my life from this day. Through Him and in His Name, I have eternal life; I’m born again. Thank you Lord, for saving my soul! I’m now a child of God. Hallelujah!”
               </p>
             </div>
-            <strong><center>Congratulations! You are now a child of God. Welcome to this great family!</center></strong>
+            <p className="text-left">
+              Congratulations! You are now a child of God. Welcome to this great family!
+            </p>
           </div>
         </motion.div>
       </section>
 
       {/* Next Steps Section */}
       <section className="container mx-auto px-4 py-2">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Your Next Steps</h2>
+        <h2 className="text-3xl md:text-4xl text-center mb-12">Your Next Steps</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
               icon: <BookOpen className="h-8 w-8 text-primary" />,
               title: 'Read "Now That You Are Born Again"',
               description: (
-                <>
-                  Learn about the step you just took in depth by reading this informative book <em>Now That You Are Born Again</em> by <strong>Rev Dr Chris Oyakhilome</strong>. You can access it{' '}
+                <p className="text-left">
+                  Learn about the step you just took in depth by reading this informative book <em>Now That You Are Born Again</em> by Rev Dr Chris Oyakhilome. You can access it{' '}
                   <a href="https://nowthatyouarebornagain.org" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">
-                    here 
+                    here
                   </a>.
-                </>
+                </p>
               ),
               bg: 'bg-primary/10',
             },
@@ -92,9 +91,9 @@ const SalvationPage = () => {
               icon: <MessageCircle className="h-8 w-8 text-secondary" />,
               title: 'Let us know',
               description: (
-                <>
-                  Send us an email on <strong>admin@kingdompages.digital</strong> or submit the form on our contact us page.
-                </>
+                <p className="text-left">
+                  Send us an email on admin@kingdompages.digital or submit the form on our contact us page.
+                </p>
               ),
               bg: 'bg-secondary/10',
             },
@@ -102,9 +101,9 @@ const SalvationPage = () => {
               icon: <Users className="h-8 w-8 text-accent" />,
               title: 'Find yourself connected to a church',
               description: (
-                <>
-                  Connect with a Bible believing local church to grow in your faith and fellowship. We recommend finding any local <strong>Christ Embassy church</strong> aka Believers' Loveworld.
-                </>
+                <p className="text-left">
+                  Connect with a Bible believing local church to grow in your faith and fellowship. We recommend finding any local Christ Embassy church aka Believers' Loveworld.
+                </p>
               ),
               bg: 'bg-accent/10',
             },
@@ -117,12 +116,12 @@ const SalvationPage = () => {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ delay: index * 0.2 }}
             >
-              <Card className="p-6 text-center glassmorphism-card h-full flex flex-col items-center justify-center">
+              <Card className="p-6 glassmorphism-card h-full flex flex-col items-start justify-start text-left">
                 <CardHeader className="p-0 mb-4">
                   <div className={`${step.bg} p-3 rounded-full inline-flex items-center justify-center mb-4`}>
                     {step.icon}
                   </div>
-                  <CardTitle className="text-2xl">{step.title}</CardTitle>
+                  <CardTitle className="text-2xl text-center">{step.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0 text-muted-foreground">
                   <CardDescription>{step.description}</CardDescription>
@@ -134,16 +133,17 @@ const SalvationPage = () => {
       </section>
 
       {/* Final Call to Action */}
-            <section className="container mx-auto text-center py-16">
+      <section className="container mx-auto py-16">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">We're Here For You</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-muted-foreground">
-            Making this decision is a the biggest decision you could ever make. We would be honored to connect with you, pray for you, and help you find your next steps in this beautiful journey.
+          <h2 className="text-3xl md:text-4xl mb-4">We're Here For You</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-muted-foreground text-left">
+            Making this decision is the biggest decision you could ever make. We would be honored to connect with you, pray for you, and help you find your next steps in this beautiful journey.
           </p>
           <Button
             size="lg"

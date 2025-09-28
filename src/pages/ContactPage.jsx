@@ -21,11 +21,11 @@ const ContactInfoCard = ({ icon, title, content, href, delay }) => (
       {React.createElement(icon, { size: 24 })}
     </div>
     <div>
-      <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+      <h3 className="text-lg text-foreground">{title}</h3>
       {href ? (
-        <a href={href} className="text-primary hover:underline break-all">{content}</a>
+        <a href={href} className="text-primary hover:underline break-all text-left block">{content}</a>
       ) : (
-        <p className="text-foreground/80 break-all">{content}</p>
+        <p className="text-foreground/80 break-all text-left">{content}</p>
       )}
     </div>
   </motion.div>
@@ -78,9 +78,10 @@ const ContactPage = () => {
       <div className="absolute w-24 h-24 bg-purple-400/20 rounded-full blur-xl bottom-20 right-16 rotate-45 z-0" />
       <div className="absolute w-16 h-16 bg-purple-500/25 rounded-full blur-md top-1/2 left-1/3 rotate-[-30deg] z-0" />
 
-      <section id="contact" className="text-center py-12 md:py-16 bg-gradient-to-br from-purple-100/30 via-blue-100/20 to-transparent rounded-xl shadow-inner scroll-mt-20 relative z-10">
+      {/* Header Section */}
+      <section id="contact" className="py-12 md:py-16 bg-gradient-to-br from-purple-100/30 via-blue-100/20 to-transparent rounded-xl shadow-inner scroll-mt-20 relative z-10">
         <motion.h1
-          className="text-5xl md:text-6xl font-extrabold mb-6 gradient-text"
+          className="text-5xl md:text-6xl mb-6 gradient-text text-center"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -89,7 +90,7 @@ const ContactPage = () => {
           Get In Touch
         </motion.h1>
         <motion.p
-          className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto text-left"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -99,6 +100,7 @@ const ContactPage = () => {
         </motion.p>
       </section>
 
+      {/* Contact Info & Form */}
       <section className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <motion.div
@@ -108,7 +110,7 @@ const ContactPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold mb-6 gradient-text">Contact Information</h2>
+            <h2 className="text-3xl mb-6 gradient-text text-center">Contact Information</h2>
             <ContactInfoCard icon={Mail} title="Email Us" content="admin@kingdompages.digital" href="mailto:admin@kingdompages.digital" delay={0.1} />
             <ContactInfoCard icon={Phone} title="Message Us" content={<span>on Kingschat <em>- @Kingdompages</em></span>} delay={0.2} />
             <ContactInfoCard icon={Globe} title="Other Sites" content={<a href="https://loveworldsonsofministry.org" target="_blank" rel="noopener noreferrer">Loveworld Sons Of Ministry</a>} delay={0.3} />
@@ -121,8 +123,8 @@ const ContactPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-3xl font-bold mb-8 text-center gradient-text">Send Us a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <h2 className="text-3xl mb-8 text-center gradient-text">Send Us a Message</h2>
+            <form onSubmit={handleSubmit} className="space-y-6 text-left">
               <div>
                 <Label htmlFor="name" className="text-foreground/80">Full Name</Label>
                 <Input

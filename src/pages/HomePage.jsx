@@ -48,8 +48,8 @@ const FeatureCard = ({ icon: Icon, title, description, link, linkText, delay }) 
         <div className="mb-4 inline-block p-4 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full text-primary">
           <Icon size={32} />
         </div>
-        <h3 className="text-2xl font-bold mb-2 text-foreground">{title}</h3>
-        <p className="text-muted-foreground mb-6 flex-grow">{description}</p>
+        <h3 className="text-2xl mb-2 text-foreground">{title}</h3>
+        <p className="text-muted-foreground mb-6 flex-grow text-left">{description}</p>
         <Button asChild variant="outline">
           <NavLink to={link} className="group">
             {linkText}
@@ -112,17 +112,16 @@ const HomePage = () => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.5, type: 'spring', stiffness: 200, damping: 20 }}
-            className="inline-flex items-center gap-4 bg-primary/10 text-primary px-4 rounded-full text-sm font-semibold mb-2 transform -rotate-3"
+            className="inline-flex items-center gap-4 bg-primary/10 text-primary px-4 rounded-full text-sm mb-2 transform -rotate-3"
           >
             Welcome, Kingdom Pager
           </motion.div>
-          <h1 className="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter">
+          <h1 className="text-6xl md:text-8xl mb-6 leading-none tracking-tighter">
             <span className="block">Read. Connect.</span>
             <span className="block highlight-scribble">Be Inspired.</span>
           </h1>
 
           <div className="flex flex-col md:flex-row items-start gap-8 mt-6">
-            {/* Text and Buttons on the left */}
             <div className="flex flex-col gap-6 md:w-1/2">
               <p className="text-lg md:text-xl text-muted-foreground">
                 <em>
@@ -142,7 +141,6 @@ const HomePage = () => {
               </div>
             </div>
 
-            {/* Large Image on the right */}
             <div className="md:w-1/2 flex justify-center">
               <img
                 src="./assets/HomePagePicture.png"
@@ -157,17 +155,16 @@ const HomePage = () => {
       {/* Carousel Section */}
       <WavySeparator direction="down" className="text-background" />
       <div className="bg-background relative z-10">
-        <h3 className="text-center text-xl font-semibold text-muted-foreground">Discover Our Collection</h3>
+        <h3 className="text-center text-xl text-muted-foreground">Discover Our Collection</h3>
         <BookCarousel />
-
-        </div>
+      </div>
       <WavySeparator direction="up" className="text-background" />
 
-      {/* Feature Cards */}
-      <section id="features" className="container mx-auto px-4 relative z-10">
-        <div className="text-left mb-4 ml-6">
+         {/* Feature Cards Section */}
+         <section id="features" className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-4">
           <h2 className="text-4xl md:text-5xl font-bold mb-2">A Canvas For Creativity</h2>
-          <p className="max-w-2xl text-muted-foreground">
+          <p className="max-w-2xl mx-auto text-muted-foreground text-left">
             Everything you need to immerse yourself in the world of Holy Spirit inspired literary work.
           </p>
         </div>
@@ -207,4 +204,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

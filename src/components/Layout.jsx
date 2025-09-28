@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { BookOpenText, Home, Info, Mail, Menu, X, Library, Cross } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { WavySeparator } from '@/components/WavySeparator';
-import footerImage from '@/assets/footer1.jpg'; // ✅ Make sure this path is correct
 
 const navItems = [
   { name: 'Home', path: '/', icon: Home },
@@ -139,34 +138,27 @@ const Layout = ({ children }) => {
           </motion.div>
         </AnimatePresence>
       </main>
+        {/* Wavy Separator Above Footer */}
+        <WavySeparator direction="up" className="text-background" />
 
-      {/* Footer */}
-      <footer className="relative mt-0 text-center text-white overflow-hidden">
-      {/* Background Image applied to outer div only */}
-      <div
-        className="w-full bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${footerImage})`,
-        }}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="pt-6 pb-6 px-4"
-        >
-          <div className="flex justify-center items-center space-x-2 mb-2">
-            <span className="text-sm">Kingdom Pages &copy; {new Date().getFullYear()}</span>
-          </div>
-          <p className="text-xs">Inspiring faith through digital stories.</p>
-          <div className="mt-2 space-x-4">
-            <NavLink to="/terms-of-service" className="hover:text-secondary transition-colors text-xs">
-              Terms of Service
-            </NavLink>
-          </div>
-        </motion.div>
-      </div>
-    </footer>
+        <footer className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-800 text-white text-center py-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="px-4"
+          >
+            <div className="flex justify-center items-center space-x-2 mb-2">
+              <span className="text-sm">Kingdom Pages &copy; {new Date().getFullYear()}</span>
+            </div>
+            <p className="text-xs">Inspiring faith through digital stories.</p>
+            <div className="mt-2 space-x-4">
+              <NavLink to="/terms-of-service" className="hover:text-secondary transition-colors text-xs">
+                Terms of Service
+              </NavLink>
+            </div>
+          </motion.div>
+        </footer>
 
     </div>
   );
