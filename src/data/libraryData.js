@@ -8,7 +8,7 @@ import aPreacherKid from "../assets/APreachersKidsStory.txt?raw";
 import myRedemption from "../assets/MyRedemption.txt?raw";
 import theGracedOne from "../assets/TheGracedOne.txt?raw";
 import theLifeManifest from "../assets/TheLifeManifest.txt?raw";
-import audioPreacherkid from "../assets/PreachersKidFinal.wav";
+import audioPreacherkid from "../assets/PreachersKidFinal1.wav";
 import audioRedemption from "../assets/Redemption.wav";
 import audioTakingAction from "../assets/TakingActionFinal.wav";
 import audioTheGracedOne from "../assets/TheGracedOne.wav";
