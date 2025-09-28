@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { BookOpenText, Home, Info, Mail, Menu, X, Library, Cross } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { WavySeparator } from '@/components/WavySeparator';
+import footerImage from '@/assets/footer1.jpg'; // ✅ Make sure this path is correct
 
 const navItems = [
   { name: 'Home', path: '/', icon: Home },
@@ -34,7 +35,7 @@ const Layout = ({ children }) => {
               >
                 <BookOpenText className="h-10 w-10 text-primary" />
               </motion.div>
-              <span className="text-2xl font-bold gradient-text" style={{ fontFamily: "'Lexend', sans-serif" }}>
+              <span className="text-2xl gradient-text" style={{ fontFamily: "'Lexend', sans-serif" }}>
                 Kingdom Pages
               </span>
             </NavLink>
@@ -51,8 +52,8 @@ const Layout = ({ children }) => {
                     to={item.path}
                     onClick={() => isMobileMenuOpen && toggleMobileMenu()}
                     className={({ isActive }) =>
-                      `relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ease-in-out hover:text-primary transform hover:scale-105 ${
-                        isActive ? 'text-primary font-semibold' : 'text-muted-foreground'
+                      `relative px-3 py-2 rounded-md text-sm transition-all duration-300 ease-in-out hover:text-primary transform hover:scale-105 ${
+                        isActive ? 'text-primary' : 'text-muted-foreground'
                       }`
                     }
                   >
@@ -107,7 +108,7 @@ const Layout = ({ children }) => {
                     to={item.path}
                     onClick={toggleMobileMenu}
                     className={({ isActive }) =>
-                      `block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                      `block px-3 py-2 rounded-md text-base transition-colors duration-200 ${
                         isActive ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted/50'
                       }`
                     }
@@ -116,15 +117,16 @@ const Layout = ({ children }) => {
                       <item.icon className="h-5 w-5" />
                       <span>{item.name}</span>
                     </div>
-									</NavLink>
-								))}
-							</div>
-						</motion.div>
-					)}
-				</AnimatePresence>
-			</header>
+                  </NavLink>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
 
-			<main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 relative">
+      {/* Main Content */}
+      <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 relative">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
@@ -138,25 +140,36 @@ const Layout = ({ children }) => {
         </AnimatePresence>
       </main>
 
-		<footer className="relative mt-0 pt-1 pb-1 text-center text-muted-foreground">
-        <WavySeparator direction="up" className="text-background" />
-				<motion.div
+      {/* Footer */}
+      <footer className="relative mt-0 text-center text-white overflow-hidden">
+      {/* Background Image applied to outer div only */}
+      <div
+        className="w-full bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${footerImage})`,
+        }}
+      >
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="relative"
+          className="pt-6 pb-6 px-4"
         >
-		 <div className="flex justify-center items-center space-x-2 mb-4">
+          <div className="flex justify-center items-center space-x-2 mb-2">
             <span className="text-sm">Kingdom Pages &copy; {new Date().getFullYear()}</span>
           </div>
-			   <p className="text-xs">Inspiring faith through digital stories.</p>
-          <div className="mt-4 space-x-4">
-            <NavLink to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</NavLink>
+          <p className="text-xs">Inspiring faith through digital stories.</p>
+          <div className="mt-2 space-x-4">
+            <NavLink to="/terms-of-service" className="hover:text-secondary transition-colors text-xs">
+              Terms of Service
+            </NavLink>
           </div>
-				</motion.div>
-			</footer>
-		</div>
-	);
+        </motion.div>
+      </div>
+    </footer>
+
+    </div>
+  );
 };
 
 export default Layout;

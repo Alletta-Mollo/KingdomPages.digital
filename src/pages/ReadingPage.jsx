@@ -194,31 +194,41 @@ const ReadingPage = () => {
         <meta property="og:description" content={`Read "${item.title}" by ${item.author}. Part of the Kingdom Pages digital library.`} />
       </Helmet>
 
-      <Card className="shadow-2xl overflow-hidden glassmorphism border-primary/20 relative z-10"> {/* Added relative z-10 */}
-        <CardHeader className="bg-gradient-to-br from-primary/10 via-secondary/10 to-green-400/10 p-6 relative">
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <div className="flex items-center space-x-2">
-            {item.type === 'PDF' ? (
-              <FileText className="h-8 w-8 text-red-500" />
-            ) : (
-              <BookOpenText className="h-8 w-8 text-primary" />
-            )}
-            <CardTitle className="text-3xl md:text-4xl gradient-text mb-1">{item.title}</CardTitle>
-          </div>
-          <CardDescription className="text-md text-muted-foreground ml-10">
-            By {item.author} - {item.type}
-          </CardDescription>
-        </motion.div>
+      <Card className="shadow-2xl overflow-hidden glassmorphism border-primary/20 relative z-10">
+        {/* Fixed CardHeader */}
+        <CardHeader className="fixed top-0 left-0 w-full bg-gradient-to-br from-primary/10 via-secondary/10 to-green-400/10 p-6 z-50">
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="flex items-center space-x-2">
+              {item.type === 'PDF' ? (
+                <FileText className="h-8 w-8 text-red-500" />
+              ) : (
+                <BookOpenText className="h-8 w-8 text-primary" />
+              )}
+              <CardTitle className="text-3xl md:text-4xl gradient-text mb-1">{item.title}</CardTitle>
+            </div>
+            <CardDescription className="text-md text-muted-foreground ml-10">
+              By {item.author} - {item.type}
+            </CardDescription>
+          </motion.div>
 
-        {/* Narration Button Positioned Bottom Right */}
-        <div className="absolute bottom-2 right-2">
-          <NarrationButton text={pages[currentPage]} />
-        </div>
-      </CardHeader>
+          {/* Narration Button Positioned Bottom Right */}
+
+          <div className="absolute bottom-2 right-2">
+            <NarrationButton audioSrc={item.audio} />
+          </div>
+        </CardHeader>
+    
+
+        {/* Spacer to prevent content overlap */}
+        <div className="pt-32" />
+
+  
+  
+
 
         
     <CardContent className="p-0 md:p-0 min-h-[500px] md:min-h-[70vh] flex flex-col justify-between relative overflow-hidden">

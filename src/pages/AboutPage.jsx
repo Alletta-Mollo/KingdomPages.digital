@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Target, BookHeart, Sparkles, Feather } from 'lucide-react';
+import { Users, Target, BookHeart, Sparkles, Feather, Import } from 'lucide-react';
 import { WavySeparator } from '@/components/WavySeparator';
 import { PencilLine } from 'lucide-react';
+//import ActiveReadersCard from "src/components/ActiveReaders.jsx";
+                                             import NarrationButton from '@/components/NarrationButton';
+
 
 const StatCard = ({ icon, value, label, color, delay }) => (
   <motion.div
@@ -157,10 +160,26 @@ const AboutPage = () => {
       <section className="py-12 md:py-16 bg-card/80 rounded-xl shadow-xl glassmorphism">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Impact by Numbers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto px-4">
-          <StatCard icon={BookHeart} value="29+" label="Digital Items" color="border-primary" delay={0.1} />
-          <StatCard icon={Users} value="+" label="Active Readers" color="border-secondary" delay={0.3} />
-          <StatCard icon={Sparkles} value="3+" label="Contributing Authors" color="border-accent" delay={0.5} />
+        <div className="flex flex-col h-full">
+          <StatCard
+            icon={BookHeart}
+            value="29+"
+            label="Digital Items"
+            color="border-primary"
+            delay={0.1}
+          />
         </div>
+
+        <div className="flex flex-col h-full">
+          <StatCard
+            icon={Sparkles}
+            value="3+"
+            label="Contributing Authors"
+            color="border-accent"
+            delay={0.5}
+          />
+        </div>
+      </div>
       </section>
       <button
            onClick={() => window.location.href = '/comment-page'}

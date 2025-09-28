@@ -8,7 +8,10 @@ import aPreacherKid from "../assets/APreachersKidsStory.txt?raw";
 import myRedemption from "../assets/MyRedemption.txt?raw";
 import theGracedOne from "../assets/TheGracedOne.txt?raw";
 import theLifeManifest from "../assets/TheLifeManifest.txt?raw";
-
+import audioPreacherkid from "../assets/PreachersKidFinal.wav";
+import audioRedemption from "../assets/Redemption.wav";
+import audioTakingAction from "../assets/TakingActionFinal.wav";
+import audioTheGracedOne from "../assets/TheGracedOne.wav";
 
 
 const aLovedLife = "To be loved by Love Himself\nTo have the entirety of nature sing and dance to your tune\nTo be an extension of eternity\nCreated creator\nHis breath in your lungs\nHis word in your mouth\nHis works by your hands\nTo be gifted only with goodness\nGrace and mercy arrive at your home each morning to escort you on your way\nBlessings tuck you in at night";
@@ -76,10 +79,10 @@ export const libraryData = [
   { id: 21, title: "Sight By Speaking", author: "Miss EJA", genre: "Short Stories", length: 5, type: "Short Stories", collection: "The Sealed Life Chronicles - II", content: sightBySpeaking , picture: "/assets/SightBySpeakingFinal;.jpeg" },
   { id: 22, title: "The Summer Everything Changed", author: "Miss EJA", genre: "Short Stories", length: 4, type: "Short Stories", collection: "The Sealed Life Chronicles - III", content: theSummerEverythingChanged, picture: "/assets/TheSummerEverythingChanged.png" },
   { id: 23, title: "The Golden Man's Trial", author: "Miss EJA", genre: "Short Stories", type: "Short Stories" , length: 7, collection: "The Sealed Life Chronicles - IV", content: theGoldenMansTrial, picture: "/assets/TheGoldenMansTrial.png" },
-  { id: 25, title: "Taking Action", author: "Delight Adisa", genre: "Short Stories", length: 3, type: "Short Stories", collection: "", content: takingAction, picture: "./assets/TakingAction.png" }, 
-  { id: 26, title: "A Preacher's Kid Story", author: "Delight Adisa", genre: "Short Stories", length: 3, type: "Short Stories", collection: "", content: aPreacherKid, picture: "./assets/APreachersKidsStory.jpeg" },
-  { id: 27, title: "My Redemption", author: "Delight Adisa", genre: "Short Stories", length: 2, type: "Short Stories", collection: "", content: myRedemption, picture: "./assets/MyRedemption.jpeg" },
-  { id: 28, title: "The Graced One", author: "Delight Adisa", genre: "Short Stories", length: 5, type: "Short Stories", collection: "", content: theGracedOne, picture: "./assets/TheGracedOne.jpeg" },
+  { id: 25, title: "Taking Action", author: "Delight Adisa", genre: "Short Stories", length: 3, type: "Short Stories", collection: "", content: takingAction, picture: "./assets/TakingAction.png", audio: audioTakingAction}, 
+  { id: 26, title: "A Preacher's Kid Story", author: "Delight Adisa", genre: "Short Stories", length: 3, type: "Short Stories", collection: "", content: aPreacherKid, picture: "./assets/APreachersKidsStory.jpeg" , audio: audioPreacherkid },
+  { id: 27, title: "My Redemption", author: "Delight Adisa", genre: "Short Stories", length: 2, type: "Short Stories", collection: "", content: myRedemption, picture: "./assets/MyRedemption.jpeg", audio: audioRedemption},
+  { id: 28, title: "The Graced One", author: "Delight Adisa", genre: "Short Stories", length: 2, type: "Short Stories", collection: "", content: theGracedOne, picture: "./assets/TheGracedOne.jpeg", audio: audioTheGracedOne},
   { id: 29, title: "The Life Manifest", author: "Miss EJA", genre: "Short Stories", length: 6, type: "Short Stories", collection: "The Sealed Life Chronicles - V", content: theLifeManifest, picture: "./assets/TheLifeManifest.png" },
 
   // PDF

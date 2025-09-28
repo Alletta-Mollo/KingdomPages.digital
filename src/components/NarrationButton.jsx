@@ -1,96 +1,94 @@
-import React, { useState, useEffect } from 'react';
-import { Volume2, Pause, Play, Square } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { Play, Pause, RotateCcw, Square } from 'lucide-react';
 
-const NarrationButton = ({ text }) => {
-  const [isSpeaking, setIsSpeaking] = useState(false);
+const NarrationButton = ({ audioSrc }) => {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [selectedVoice, setSelectedVoice] = useState(null);
-  const [voices, setVoices] = useState([]);
+  const [showControls, setShowControls] = useState(false);
 
-  useEffect(() => {
-    const loadVoices = () => {
-      const allVoices = speechSynthesis.getVoices();
-      const filtered = allVoices.filter(v =>
-        v.lang === 'en-GB' &&
-        (v.name === 'Google UK English Female' || v.name === 'Google UK English Male')
-      );
-      setVoices(filtered);
-      setSelectedVoice(filtered[0]);
-    };
+  if (!audioSrc) return null; // ⛔ Don't render if no audio
 
-    if (speechSynthesis.onvoiceschanged !== undefined) {
-      speechSynthesis.onvoiceschanged = loadVoices;
-    }
-    loadVoices();
-  }, []);
-
-  const handleSpeak = () => {
-    speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.voice = selectedVoice;
-    utterance.rate = 0.9;
-    utterance.pitch = 1;
-    utterance.onend = () => {
-      setIsSpeaking(false);
-      setIsPaused(false);
-    };
-    speechSynthesis.speak(utterance);
-    setIsSpeaking(true);
+  const handlePlay = () => {
+    audioRef.current.play();
+    setIsPlaying(true);
     setIsPaused(false);
+    setShowControls(true);
   };
 
   const handlePause = () => {
-    speechSynthesis.pause();
+    audioRef.current.pause();
     setIsPaused(true);
   };
 
   const handleResume = () => {
-    speechSynthesis.resume();
+    audioRef.current.play();
+    setIsPaused(false);
+  };
+
+  const handleRestart = () => {
+    audioRef.current.currentTime = 0;
+    audioRef.current.play();
+    setIsPlaying(true);
     setIsPaused(false);
   };
 
   const handleStop = () => {
-    speechSynthesis.cancel();
-    setIsSpeaking(false);
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+    setIsPlaying(false);
     setIsPaused(false);
+    setShowControls(false);
   };
 
   return (
-    <div className="flex items-center gap-2 text-xs">
-      {/* Voice Toggle */}
-      <div className="flex gap-1">
-        {voices.map((voice) => (
-          <button
-            key={voice.name}
-            onClick={() => setSelectedVoice(voice)}
-            className={`p-1 rounded-full border ${
-              selectedVoice?.name === voice.name ? 'border-primary' : 'border-muted'
-            }`}
-            title={voice.name}
-          >
-            {voice.name.includes('Female') ? '👩' : '👨'}
-          </button>
-        ))}
-      </div>
+    <div className="absolute bottom-4 right-4 flex items-center gap-2">
+      <audio ref={audioRef} src={audioSrc} preload="auto" />
 
-      {/* Controls */}
-      {!isSpeaking ? (
-        <button onClick={handleSpeak} className="p-1 text-muted-foreground hover:text-primary">
-          <Volume2 size={14} />
+      {!isPlaying ? (
+        <button
+          onClick={handlePlay}
+          className="bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 transition"
+          title="Play Story"
+        >
+          <Play size={20} />
         </button>
-      ) : (
+      ) : null}
+
+      {showControls && (
         <>
+          <button
+            onClick={handleRestart}
+            className="bg-purple-600 text-white p-3 rounded-full shadow hover:bg-purple-700"
+            title="Restart"
+          >
+            <RotateCcw size={18} />
+          </button>
+
           {isPaused ? (
-            <button onClick={handleResume} className="p-1 text-green-600 hover:text-green-700">
-              <Play size={14} />
+            <button
+              onClick={handleResume}
+              className="bg-purple-600 text-white p-3 rounded-full shadow hover:bg-purple-700"
+              title="Resume"
+            >
+              <Play size={18} />
             </button>
           ) : (
-            <button onClick={handlePause} className="p-1 text-yellow-500 hover:text-yellow-600">
-              <Pause size={14} />
+            <button
+              onClick={handlePause}
+              className="bg-purple-600 text-white p-3 rounded-full shadow hover:bg-purple-700"
+              title="Pause"
+            >
+              <Pause size={18} />
             </button>
           )}
-          <button onClick={handleStop} className="p-1 text-red-600 hover:text-red-700">
-            <Square size={14} />
+
+          <button
+            onClick={handleStop}
+            className="bg-purple-600 text-white p-3 rounded-full shadow hover:bg-purple-700"
+            title="Stop"
+          >
+            <Square size={18} />
           </button>
         </>
       )}
