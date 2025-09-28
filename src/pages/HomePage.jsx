@@ -101,7 +101,7 @@ const HomePage = () => {
       </div>
 
       {/* Hero Section */}
-      <section id="home" className="text-left py-8 md:py-6 relative">
+      <section id="home" className="text-left py-8 md:py-12 relative">
         <motion.div
           initial={{ opacity: 0, y: -30, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

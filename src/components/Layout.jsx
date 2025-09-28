@@ -141,24 +141,30 @@ const Layout = ({ children }) => {
         {/* Wavy Separator Above Footer */}
         <WavySeparator direction="up" className="text-background" />
 
-        <footer className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-800 text-white text-center py-6">
+       {/* Wavy Separator Above Footer */}
+      <WavySeparator direction="up" className="text-background" />
+
+      <footer className="relative text-center text-white overflow-hidden">
+        <div className="w-full bg-gradient-to-br from-primary via-purple-600 to-secondary py-10 px-4 backdrop-blur-md">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="px-4"
+            className="max-w-4xl mx-auto"
           >
             <div className="flex justify-center items-center space-x-2 mb-2">
               <span className="text-sm">Kingdom Pages &copy; {new Date().getFullYear()}</span>
             </div>
-            <p className="text-xs">Inspiring faith through digital stories.</p>
+            <p className="text-xs text-white/80">Inspiring faith through digital stories.</p>
             <div className="mt-2 space-x-4">
-              <NavLink to="/terms-of-service" className="hover:text-secondary transition-colors text-xs">
+              <NavLink to="/terms-of-service" className="hover:text-white transition-colors text-xs underline">
                 Terms of Service
               </NavLink>
             </div>
           </motion.div>
-        </footer>
+        </div>
+      </footer>
+
 
     </div>
   );

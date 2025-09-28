@@ -214,12 +214,7 @@ const ReadingPage = () => {
               By {item.author} - {item.type}
             </CardDescription>
           </motion.div>
-
-          {/* Narration Button Positioned Bottom Right */}
-
-          <div className="absolute bottom-2 right-2">
-            <NarrationButton audioSrc={item.audio} />
-          </div>
+          <NarrationButton audioSrc={item.audio} />
         </CardHeader>
     
 
@@ -231,7 +226,7 @@ const ReadingPage = () => {
 
 
         
-    <CardContent className="p-0 md:p-0 min-h-[500px] md:min-h-[70vh] flex flex-col justify-between relative overflow-hidden">
+    <CardContent className=" mb-6 p-0 md:p-0 min-h-[500px] md:min-h-[70vh] flex flex-col justify-between relative overflow-hidden ">
   {item.type === 'PDF' && item.pdfUrl ? (
   <PDFFlipbook pdfUrl={item.pdfUrl} />
   ) : pages.length > 0 ? (
