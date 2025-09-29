@@ -110,10 +110,38 @@ const ContactPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl mb-6 gradient-text text-center">Contact Information</h2>
+            <h2 className="text-3xl mb-6 gradient-text text-left">Contact Information</h2>
             <ContactInfoCard icon={Mail} title="Email Us" content="admin@kingdompages.digital" href="mailto:admin@kingdompages.digital" delay={0.1} />
-            <ContactInfoCard icon={Phone} title="Message Us" content={<span>on Kingschat <em>- @Kingdompages</em></span>} delay={0.2} />
-            <ContactInfoCard icon={Globe} title="Other Sites" content={<a href="https://loveworldsonsofministry.org" target="_blank" rel="noopener noreferrer">Loveworld Sons Of Ministry</a>} delay={0.3} />
+            <ContactInfoCard
+              icon={Phone}
+              title="Message Us"
+              content={
+                <a
+                  href="https://accounts.kingsch.at/signup/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline hover:text-primary/80"
+                >
+                  on Kingschat <em>- @Kingdompages</em>
+                </a>
+              }
+              delay={0.2}
+            />
+            <ContactInfoCard
+              icon={Globe}
+              title="Other Sites"
+              content={
+                <a
+                  href="https://loveworldsonsofministry.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline hover:text-primary/80"
+                >
+                  Loveworld Sons Of Ministry
+                </a>
+              }
+              delay={0.3}
+            />
           </motion.div>
 
           <motion.div
@@ -123,7 +151,7 @@ const ContactPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-3xl mb-8 text-center gradient-text">Send Us a Message</h2>
+            <h2 className="text-3xl mb-8 text-left gradient-text">Send Us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6 text-left">
               <div>
                 <Label htmlFor="name" className="text-foreground/80">Full Name</Label>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { libraryData } from "@/data/libraryData";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 
 const shuffleArray = (array) => {
   const shuffled = [...array];
@@ -113,20 +115,20 @@ const BookCarousel = () => {
       </div>
 
       {/* Controls */}
-      <div className="flex gap-6 mt-10">
-        <button
-          onClick={prevBook}
-          className="px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/80 transition"
-        >
-          ◀
-        </button>
-        <button
-          onClick={nextBook}
-          className="px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/80 transition"
-        >
-          ▶
-        </button>
-      </div>
+        <div className="flex gap-6 mt-10 justify-center">
+          <button
+            onClick={prevBook}
+            className="px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/80 transition flex items-center justify-center"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            onClick={nextBook}
+            className="px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/80 transition flex items-center justify-center"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
     </div>
   );
 };

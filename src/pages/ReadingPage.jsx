@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getLibraryItemById } from '@/data/libraryData'; 
@@ -13,6 +12,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { Helmet } from 'react-helmet-async';
 import PDFFlipbook from '@/components/PDFFlipbook';
 import NarrationButton from '@/components/NarrationButton';
+import React, { useState, useEffect, useRef } from 'react'; // ✅ include useRef
+
 
 
 
@@ -56,6 +57,8 @@ const formatContent = (text) => {
 
 
 const ReadingPage = () => {
+  const contentRef = useRef(null);
+
   const { itemId } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -70,6 +73,7 @@ const ReadingPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
+    
     window.scrollTo(0, 0);
     const libraryItem = getLibraryItemById(itemId);
     if (!libraryItem) {
@@ -111,6 +115,15 @@ const ReadingPage = () => {
     setCurrentPage(0); 
   }, [itemId, navigate]);
 
+  useEffect(() => {
+    if (contentRef.current) {
+      const yOffset = -100; 
+      const y = contentRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  }, [currentPage]);
+  
+
   const handleCommentSubmit = (e) => {
     e.preventDefault();
     if (!commenterName.trim() || !newComment.trim()) {
@@ -144,20 +157,30 @@ const ReadingPage = () => {
     }, 500);
   };
 
-  const nextPage = () => {
-    if (item && item.type !== 'PDF' && currentPage < pages.length - 1) {
-      setDirection(1);
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (item && item.type !== 'PDF' && currentPage > 0) {
-      setDirection(-1);
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
+          const scrollToContent = () => {
+            if (contentRef.current) {
+              const yOffset = -100; 
+              const y = contentRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          };
+  
+      
+            const nextPage = () => {
+              if (item && item.type !== 'PDF' && currentPage < pages.length - 1) {
+                setDirection(1);
+                setCurrentPage(currentPage + 1);
+              }
+            };
+                
+          const prevPage = () => {
+            if (item && item.type !== 'PDF' && currentPage > 0) {
+              setDirection(-1);
+              setCurrentPage(currentPage - 1);
+            }
+          };
+      
+  
   if (!item) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)] text-center">
@@ -173,6 +196,9 @@ const ReadingPage = () => {
       </div>
     );
   }
+
+  
+
 
   const pageVariants = {
     initial: dir => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0, scale: 0.9 }),
@@ -221,48 +247,47 @@ const ReadingPage = () => {
         {/* Spacer to prevent content overlap */}
         <div className="pt-32" />
 
-  
-  
-
-
         
-    <CardContent className=" mb-6 p-0 md:p-0 min-h-[500px] md:min-h-[70vh] flex flex-col justify-between relative overflow-hidden ">
-  {item.type === 'PDF' && item.pdfUrl ? (
-  <PDFFlipbook pdfUrl={item.pdfUrl} />
-  ) : pages.length > 0 ? (
-    
-    <div className="p-6 md:p-8 flex-grow flex flex-col justify-between">
-      <AnimatePresence initial={false} custom={direction} mode="wait">
-        <motion.div
-          key={currentPage}
-          custom={direction}
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="text-lg leading-relaxed text-foreground/90 whitespace-pre-line max-w-none flex-grow"
-          style={{ perspective: "1000px" }} 
-        >
-          {formatContent(pages[currentPage])}
-        </motion.div>
-      </AnimatePresence>
+        <CardContent className="mb-6 p-0 md:p-0 min-h-[500px] md:min-h-[70vh] flex flex-col justify-between relative overflow-hidden">
+          {item.type === 'PDF' && item.pdfUrl ? (
+            <PDFFlipbook pdfUrl={item.pdfUrl} />
+          ) : pages.length > 0 ? (
+            <div className="p-6 md:p-8 flex-grow flex flex-col justify-between">
+              {/* ✅ Scroll target placed here */}
+              <div ref={contentRef} />
 
-      <div className="flex justify-between items-center mt-8 pt-6 border-t border-border/50">
-        <Button onClick={prevPage} disabled={currentPage === 0} variant="outline" className="group">
-          <ChevronLeft size={20} className="mr-2 transition-transform duration-300 group-hover:-translate-x-1" /> Previous
-        </Button>
-        <span className="text-sm text-muted-foreground">Page {currentPage + 1} of {pages.length}</span>
-        <Button onClick={nextPage} disabled={currentPage === pages.length - 1} variant="outline" className="group">
-          Next <ChevronRight size={20} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-        </Button>
-      </div>
-    </div>
-  ) : (
-    <div className="p-6 md:p-8 flex-grow flex items-center justify-center">
-      <p className="text-muted-foreground text-xl">Content not available for this item.</p>
-    </div>
-  )}
-</CardContent>
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={currentPage}
+                  custom={direction}
+                  variants={pageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="text-lg leading-relaxed text-foreground/90 whitespace-pre-line max-w-none flex-grow"
+                  style={{ perspective: "1000px" }}
+                >
+                  {formatContent(pages[currentPage])}
+                </motion.div>
+              </AnimatePresence>
+
+              <div className="flex justify-between items-center mt-8 pt-6 border-t border-border/50">
+                <Button onClick={prevPage} disabled={currentPage === 0} variant="outline" className="group">
+                  <ChevronLeft size={20} className="mr-2 transition-transform duration-300 group-hover:-translate-x-1" /> Previous
+                </Button>
+                <span className="text-sm text-muted-foreground">Page {currentPage + 1} of {pages.length}</span>
+                <Button onClick={nextPage} disabled={currentPage === pages.length - 1} variant="outline" className="group">
+                  Next <ChevronRight size={20} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="p-6 md:p-8 flex-grow flex items-center justify-center">
+              <p className="text-muted-foreground text-xl">Content not available for this item.</p>
+            </div>
+          )}
+        </CardContent>
+
 
       </Card>
       

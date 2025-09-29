@@ -51,7 +51,7 @@ const AboutPage = () => {
 
       {/* Mission & Vision */}
       <section className="container mx-auto">
-        <h2 className="text-3xl md:text-4xl text-center mb-12 gradient-text">Our Journey & Mission</h2>
+        <h2 className="text-3xl md:text-4xl text-left mb-12 gradient-text">Our Journey & Mission</h2>
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -99,28 +99,30 @@ const AboutPage = () => {
 
       {/* Impact Section */}
       <section className="py-12 md:py-16 bg-card/80 rounded-xl shadow-xl glassmorphism">
-        <h2 className="text-3xl md:text-4xl text-center mb-12 gradient-text">Impact by Numbers</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto px-4">
-          <div className="flex flex-col h-full">
-            <StatCard
-              icon={BookHeart}
-              value="29+"
-              label="Digital Items"
-              color="border-primary"
-              delay={0.1}
-            />
-          </div>
-          <div className="flex flex-col h-full">
-            <StatCard
-              icon={Sparkles}
-              value="3+"
-              label="Contributing Authors"
-              color="border-accent"
-              delay={0.5}
-            />
-          </div>
+      <h2 className="text-3xl md:text-4xl text-center mb-12 gradient-text">Impact by Numbers</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto px-4">
+        <div className="flex flex-col h-full">
+          <StatCard
+            icon={BookHeart}
+            value="29+"
+            label="Digital Items"
+            color="border-primary"
+            delay={0.1}
+          />
         </div>
-      </section>
+        <div className="flex flex-col h-full">
+          <StatCard
+            icon={Sparkles}
+            value="3+"
+            label="Contributing Authors"
+            color="border-accent"
+            delay={0.5}
+          />
+        </div>
+      
+      </div>
+    </section>
+
 
       {/* Floating Button */}
       <button

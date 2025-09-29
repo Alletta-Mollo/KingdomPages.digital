@@ -131,7 +131,7 @@ const HomePage = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="sm" asChild className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity">
                   <NavLink to="/library">
-                    Explore The Library
+                    Explore Our Library
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </NavLink>
                 </Button>
@@ -162,12 +162,13 @@ const HomePage = () => {
 
          {/* Feature Cards Section */}
          <section id="features" className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-2">A Canvas For Creativity</h2>
-          <p className="max-w-2xl mx-auto text-muted-foreground text-left">
-            Everything you need to immerse yourself in the world of Holy Spirit inspired literary work.
-          </p>
-        </div>
+         <div className="text-left mb-4 max-w-2xl">
+        <h2 className="text-4xl md:text-5xl font-bold mb-2">A Canvas For Creativity</h2>
+        <p className="text-base md:text-lg text-muted-foreground">
+          Everything you need to immerse yourself in the world of Holy Spirit inspired literary work.
+        </p>
+      </div>
+
 
         <div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 bg-transparent"

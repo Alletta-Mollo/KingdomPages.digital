@@ -81,8 +81,8 @@ const LibraryPage = () => {
 
       {/* Library Header + Search */}
       <div className="p-6 md:p-8 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-xl shadow-lg glassmorphism">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-          <h1 className="text-4xl font-bold gradient-text">Our Digital Library</h1>
+        <div className="flex flex-col md:flex-row justify-center items-center mb-6 gap-4">
+          <h1 className="text-4xl font-bold gradient-text text-center">Our Digital Library</h1>
         </div>
 
         <div className="relative mb-6">

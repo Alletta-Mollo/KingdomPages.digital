@@ -91,13 +91,22 @@ const CommentPage = () => {
       >
         <h1 className="text-5xl md:text-6xl font-extrabold mb-6 gradient-text">Community</h1>
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
-          Share your thoughts, reflections and testimonies for everyone to see.
+          Ask questions, Share your thoughts, reflections and testimonies for everyone to see
         </p>
       </motion.div>
 
+      {/* Start a Conversation Button */}
+      <div className="text-center mb-10 relative z-10">
+        <button
+          onClick={() => setShowForm(true)}
+          className="inline-block bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full font-semibold shadow-md hover:opacity-90 transition"
+        >
+          Start a Conversation
+        </button>
+      </div>
+
       {/* Comments Section */}
       <div className="max-w-4xl mx-auto relative z-10">
-        {/* <h2 className="text-2xl font-bold mb-4">Share your thoughts here</h2> */}
         {comments.length === 0 ? (
           <p className="text-muted-foreground">No comments yet. Be the first to share!</p>
         ) : (
@@ -185,14 +194,6 @@ const CommentPage = () => {
         )}
       </div>
 
-      {/* Floating Add Comment Button */}
-      <button
-        onClick={() => setShowForm(true)}
-        className="fixed bottom-6 right-6 z-50 bg-primary text-white px-4 py-2 rounded-full shadow-lg hover:opacity-90"
-      >
-        + Add a Comment
-      </button>
-
       {/* Pop-Up Comment Form */}
       {showForm && (
         <div className="fixed bottom-6 right-6 z-50 w-[90vw] max-w-md bg-card/90 backdrop-blur-md p-6 rounded-xl shadow-xl glassmorphism aurora-card">
@@ -214,7 +215,7 @@ const CommentPage = () => {
               required
               className="w-full p-2 rounded bg-background/70 border border-muted"
             />
-                     <textarea
+            <textarea
               name="message"
               placeholder="Your message..."
               value={formData.message}
@@ -223,12 +224,7 @@ const CommentPage = () => {
               rows={3}
               className="w-full p-2 rounded bg-background/70 border border-muted"
             />
-            {/* <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="w-full p-2 bg-background/70 rounded border border-muted"
-            /> */}
+
             <button
               type="submit"
               className="w-full py-2 px-4 rounded bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:opacity-90 transition"

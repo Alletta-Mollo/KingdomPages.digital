@@ -32,8 +32,13 @@ const SalvationPage = () => {
           <h1 className="text-5xl md:text-7xl mb-6 leading-tight">
             <span className="gradient-text">A Step Of Faith</span>
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-10 text-left">
-            <em>I am ready to receive Jesus Christ as my Lord and Saviour, and start my walk of faith with Him.</em>
+
+          <p className="max-w-3xl mx-auto text-base md:text-lg text-muted-foreground mb-8 text-justify">
+            Life without Christ will never be truly fulfilling and meaningful, we were all created by God to be in union with Him. It is our belief that as you have been reading the different stories and poems, something has taken place in your heart. If you didn’t already have that life giving connection, you have begun to recognise that you need it.
+          </p>
+
+          <p className="max-w-3xl mx-auto text-base md:text-lg text-muted-foreground mb-8 text-justify">
+            The great news is that you can have that longing in your heart fulfilled today, you can become one with God in Christ Jesus. All it takes is your YES. Say yes to His Love and the perfect sacrifice of His son Jesus Christ dying to take away all your Sins. Say yes to a New Life, which is His Divine Life taking the place of your old life.
           </p>
         </motion.div>
 
@@ -46,7 +51,7 @@ const SalvationPage = () => {
           className="max-w-4xl mx-auto glassmorphism p-8 md:p-12 rounded-2xl shadow-xl aurora-card"
         >
           <h2 className="text-3xl md:text-4xl text-center mb-8">The Steps Of Salvation</h2>
-          <div className="space-y-6 text-lg text-foreground/90 leading-relaxed text-left">
+          <div className="space-y-6 text-base md:text-lg text-foreground/90 leading-relaxed text-left">
             <p>
               The Bible teaches that salvation is a gift from God, offered freely to all who believe in His Son, Jesus Christ. It's not something we can earn through good works, but something we receive through faith shown in our confession.
             </p>
@@ -54,17 +59,30 @@ const SalvationPage = () => {
               "9 If you declare with your mouth, “Jesus is Lord,” and believe in your heart that God raised him from the dead, you will be saved. 10 For it is with your heart that you believe and are justified, and it is with your mouth that you profess your faith and are saved." - Romans 10: 9 - 10
             </blockquote>
             <p>
-              If you feel a stirring in your heart and wish to accept this precious gift, you can express your faith through saying the following Prayer. Prayer is a means of communicating to God. He knows your heart, and it's the attitude of your heart that He cares about.
+              To accept this precious gift, you can express your faith through saying the following prayer. When you pray, you are communicating with God, He sees your heart and He hears you and will respond according to your faith.
             </p>
             <div className="p-6 bg-muted/50 rounded-lg">
               <h3 className="text-xl mb-2 text-primary text-center">Prayer of Salvation</h3>
-              <p className="italic text-left">
+              <p className="italic text-base md:text-lg text-left">
                 "O Lord God, I believe with all my heart in Jesus Christ, Son of the living God. I believe He died for me and God raised Him from the dead. I believe He’s alive today. I confess with my mouth that Jesus Christ is the Lord of my life from this day. Through Him and in His Name, I have eternal life; I’m born again. Thank you Lord, for saving my soul! I’m now a child of God. Hallelujah!”
               </p>
             </div>
-            <p className="text-left">
+            <p className="text-center font-semibold">
               Congratulations! You are now a child of God. Welcome to this great family!
             </p>
+          </div>
+
+          <div className="flex justify-center mt-8">
+            <Button
+              size="lg"
+              asChild
+              className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity text-base px-6 py-6 sm:px-8 sm:py-7"
+            >
+              <NavLink to="/contact" className="flex items-center">
+                Reach Out to us
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </NavLink>
+            </Button>
           </div>
         </motion.div>
       </section>
@@ -78,9 +96,14 @@ const SalvationPage = () => {
               icon: <BookOpen className="h-8 w-8 text-primary" />,
               title: 'Read "Now That You Are Born Again"',
               description: (
-                <p className="text-left">
+                <p className="text-base md:text-lg text-left">
                   Learn about the step you just took in depth by reading this informative book <em>Now That You Are Born Again</em> by Rev Dr Chris Oyakhilome. You can access it{' '}
-                  <a href="https://nowthatyouarebornagain.org" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">
+                  <a
+                    href="https://nowthatyouarebornagain.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline hover:text-primary/80"
+                  >
                     here
                   </a>.
                 </p>
@@ -91,7 +114,7 @@ const SalvationPage = () => {
               icon: <MessageCircle className="h-8 w-8 text-secondary" />,
               title: 'Let us know',
               description: (
-                <p className="text-left">
+                <p className="text-base md:text-lg text-left">
                   Send us an email on admin@kingdompages.digital or submit the form on our contact us page.
                 </p>
               ),
@@ -101,7 +124,7 @@ const SalvationPage = () => {
               icon: <Users className="h-8 w-8 text-accent" />,
               title: 'Find yourself connected to a church',
               description: (
-                <p className="text-left">
+                <p className="text-base md:text-lg text-left">
                   Connect with a Bible believing local church to grow in your faith and fellowship. We recommend finding any local Christ Embassy church aka Believers' Loveworld.
                 </p>
               ),
@@ -130,32 +153,6 @@ const SalvationPage = () => {
             </motion.div>
           ))}
         </div>
-      </section>
-
-      {/* Final Call to Action */}
-      <section className="container mx-auto py-16">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center"
-        >
-          <h2 className="text-3xl md:text-4xl mb-4">We're Here For You</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-muted-foreground text-left">
-            Making this decision is the biggest decision you could ever make. We would be honored to connect with you, pray for you, and help you find your next steps in this beautiful journey.
-          </p>
-          <Button
-            size="lg"
-            asChild
-            className="group bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 transition-opacity text-base px-6 py-6 sm:px-8 sm:py-7"
-          >
-            <NavLink to="/contact">
-              Reach Out to us 
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </NavLink>
-          </Button>
-        </motion.div>
       </section>
     </div>
   );
