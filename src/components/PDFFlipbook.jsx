@@ -15,8 +15,8 @@ const PDFFlipbook = ({ pdfUrl }) => {
       <Document
         file={pdfUrl}
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-        loading={<p className="text-muted-foreground text-center">Loading PDF...</p>}
-        error={<p className="text-red-500 text-center">Failed to load PDF file.</p>}
+        loading={<p className="text-muted-foreground text-center">Loading...</p>}
+        error={<p className="text-red-500 text-center">Failed to load book.</p>}
       >
         {numPages && (
           <HTMLFlipBook
